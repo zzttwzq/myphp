@@ -9,8 +9,8 @@
 
     function __construct(){
 
-      $this->session = mysql_connect("127.0.0.1","root","1111");//测试环境
-      // $this->session = mysql_connect("127.0.0.1","root","111111");//正式环境
+      // $this->session = mysql_connect("127.0.0.1","root","1111");//测试环境
+      $this->session = mysql_connect("127.0.0.1","root","111111");//正式环境
 
       if (!$this->session){
 
