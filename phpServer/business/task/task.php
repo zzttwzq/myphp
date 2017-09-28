@@ -15,7 +15,7 @@
   $manager = new mysqlConnectManager();
   $manager->connectToDataBase("MYPLAN");
 
-  if ($fs == "add") {
+  if ($action == "add") {
 
     //添加数据
     $arrayName = array(
@@ -27,5 +27,23 @@
     'endtime' => $endtime);
 
     $manager->addData("TASK",$arrayName);
+  }else if ($action == "getproject") {
+    $rowArray = array();
+    //查询数据
+    $dataModelArray = $manager->selectFromTabel("TASK","id,subid,title,text,finished,starttime,endtime","","task");
+    //总条数
+    $total = 0;
+    foreach ($dataModelArray as $value) {
+
+      $total ++;
+
+      $singelArray = array('id' => $value->id, 'subid' => $value->subid, 'title' => $value->title,
+      'text' => $value->text, 'finished' => $value->finished, 'starttime' => $value->starttime, 'endtime' => $value->endtime);
+
+      $rowArray[] = $singelArray;
+    }
+    $array['rows'] = $rowArray;
+    $array['total'] = $total;
+    echo json_encode($array);
   }
  ?>

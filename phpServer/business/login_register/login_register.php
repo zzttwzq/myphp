@@ -7,7 +7,7 @@
   $arr = json_decode($raw_post_data,true);
 
 
-  $fs = $_GET['action'];  //请求方式
+  $action = $_GET['action'];  //请求方式
   $name = $arr["name"]; //用户名
   $password = $arr["password"]; //密码
 
@@ -15,7 +15,7 @@
   //连接数据库
   $manager = new mysqlConnectManager();
   $manager->connectToDataBase("MYPLAN");
-  if ($fs == "login") {
+  if ($action == "login") {
 
     $haveusr;
 
@@ -41,7 +41,7 @@
       echo json_encode($singelArray);
     }
   }
-  else {
+  else if ($action == "add") {
 
     $mobile = $arr['mobile'];
     $age = (int)$arr['age'];
@@ -57,5 +57,25 @@
     $arrayName = array('name' => $name,'age' => $age,'password' => $password,'mobile' => $mobile,'cent' => 100,
     'token' => $usr_token,'lastlogin' => $lastlogin,'level' => $level,'yanzhen' => $yanzhen);
     $manager->addData("LOGIN",$arrayName);
+  }else if ($action == "getuser") {
+
+    $rowArray = array();
+    //查询数据
+    $dataModelArray = $manager->selectFromTabel("LOGIN","id,password,name,age,mobile,cent,token","","login");
+
+    //总条数
+    $total = 0;
+    foreach ($dataModelArray as $value) {
+
+      $total ++;
+
+      $singelArray = array('id' => $value->id, 'name' => $value->name, 'mobile' => $value->mobile,
+      'age' => $value->age, 'cent' => $value->cent, 'token' => $value->token);
+      $rowArray[] = $singelArray;
+    }
+
+    $array['rows'] = $rowArray;
+    $array['total'] = $total;
+    echo json_encode($array);
   }
  ?>

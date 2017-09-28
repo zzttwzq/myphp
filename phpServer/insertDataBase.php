@@ -1,5 +1,5 @@
 <?php
-
+       
   include_once "classes/mysqlConnectManager.php";
 
   $manager = new mysqlConnectManager();
