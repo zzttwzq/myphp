@@ -2,7 +2,7 @@
 
   include_once "../../classes/mysqlConnectManager.php";
 
-  $fs = $_GET['action'];
+  $action = $_GET['action'];
   //获取数据
   $raw_post_data = file_get_contents('php://input');
   $arr = json_decode($raw_post_data,true);
