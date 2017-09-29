@@ -6,10 +6,6 @@
   //获取数据
   $raw_post_data = file_get_contents('php://input');
   $arr = json_decode($raw_post_data,true);
-  $title = $arr['title'];
-  $text = $arr['text'];
-  $starttime = $arr['starttime'];
-  $endtime = $arr['endtime'];
 
   //连接数据库
   $manager = new mysqlConnectManager();
@@ -17,28 +13,34 @@
 
   if ($action == "add") {
 
+    $title = $arr['title'];
+    $text = $arr['text'];
+
+    date_default_timezone_set('PRC');
+    $datetime = date('y-m-d h:i:s',time());
+
     //添加数据
     $arrayName = array(
-    'subid' => "1",
     'title' => $title,
     'text' => $text,
-    'finished' => 0,
-    'starttime' => $starttime,
-    'endtime' => $endtime);
+    'pic' => "http://localhost/myweb/imgs/".$arr['type'].".png",
+    'seetime' => 0,
+    'type' => $arr['type'],
+    'datetime' => $datetime);
 
     $manager->addData("TASK",$arrayName);
-  }else if ($action == "getproject") {
+  }else if ($action == "gettask") {
     $rowArray = array();
     //查询数据
-    $dataModelArray = $manager->selectFromTabel("TASK","id,subid,title,text,finished,starttime,endtime","","task");
+    $dataModelArray = $manager->selectFromTabel("TASK","id,type,title,text,pic,seetime,datetime",$arr['filter'],"task");
     //总条数
     $total = 0;
     foreach ($dataModelArray as $value) {
 
       $total ++;
 
-      $singelArray = array('id' => $value->id, 'subid' => $value->subid, 'title' => $value->title,
-      'text' => $value->text, 'finished' => $value->finished, 'starttime' => $value->starttime, 'endtime' => $value->endtime);
+      $singelArray = array('id' => $value->id, 'pic' => $value->pic, 'title' => $value->title,
+      'text' => $value->text, 'seetime' => $value->seetime, 'datetime' => $value->datetime,'type' => $value->type,);
 
       $rowArray[] = $singelArray;
     }

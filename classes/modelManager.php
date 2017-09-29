@@ -17,12 +17,12 @@
   class TaskModel{
 
     var $id;
-    var $subid;
+    var $pic;
     var $title;
     var $text;
-    var $finished;
-    var $starttime;
-    var $endtime;
+    var $seetime;
+    var $datetime;
+    var $type;
   }
 
   function createModel($type){
@@ -52,13 +52,13 @@
       $model->password = $row["PASSWORD"];
     }else if ($type == "task") {
 
-      $model->subid = $row["SUBID"];
+      $model->type = $row["TYPE"];
+      $model->pic = $row["PIC"];
       $model->id = $row["ID"];
       $model->title = $row["TITLE"];
       $model->text = $row["TEXT"];
-      $model->finished = $row["FINISHED"];
-      $model->starttime = $row["STARTTIME"];
-      $model->endtime = $row["ENDTIME"];
+      $model->seetime = $row["SEETIME"];
+      $model->datetime = $row["DATETIME"];
     }
   }
 
