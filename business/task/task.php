@@ -23,7 +23,7 @@
     $arrayName = array(
     'title' => $title,
     'text' => $text,
-    'pic' => "http://localhost/myweb/imgs/".$arr['type'].".png",
+    'pic' => "http://120.78.131.83/myweb/imgs/".$arr['type'].".png",
     'seetime' => 0,
     'type' => $arr['type'],
     'datetime' => $datetime);

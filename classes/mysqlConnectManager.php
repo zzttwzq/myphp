@@ -141,7 +141,7 @@
       }
       else{
 
-        $singelArray = array('result' => 0, 'msg' => "Error 添加失败！ " . mysql_error());
+        $singelArray = array('result' => 0, 'msg' => "Error 添加失败！ " . mysql_error()." sql:".$sql);
         echo json_encode($singelArray);
       }
     }

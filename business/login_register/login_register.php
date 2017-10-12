@@ -26,8 +26,8 @@
       if ($value->name == $name &&
           $value->password == $password) {
 
-          $haveusr = $value;
-          break;
+            $haveusr = $value;
+            break;
       }
     }
 
