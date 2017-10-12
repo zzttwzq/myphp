@@ -31,6 +31,7 @@
     $manager->addData("TASK",$arrayName);
   }else if ($action == "gettask") {
     $rowArray = array();
+
     //查询数据
     $dataModelArray = $manager->selectFromTabel("TASK","id,type,title,text,pic,seetime,datetime",$arr['filter'],"task");
     //总条数
