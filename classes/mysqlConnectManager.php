@@ -57,7 +57,7 @@
         return $listArray;
       }else{
 
-        $singelArray = array('result' => 0, 'msg' => "查询失败！！！". mysql_error());
+        $singelArray = array('result' => 0, 'msg' => "查询失败！！！". mysql_error()." sql>>".$qurel);
         echo json_encode($singelArray);
       }
     }

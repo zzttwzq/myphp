@@ -31,20 +31,24 @@
     $manager->addData("TASK",$arrayName);
   }else if ($action == "gettask") {
     $rowArray = array();
+    $page = $arr['page']*10;
+    $total = 0;//总条数
 
-    //查询数据
-    $dataModelArray = $manager->selectFromTabel("TASK","id,type,title,text,pic,seetime,datetime",$arr['filter'],"task");
-    //总条数
-    $total = 0;
+    //先查一遍总的数据
+    $dataModelArray = $manager->selectFromTabel("TASK","id",$arr['filter'],"task");
+    $total = sizeof($dataModelArray);
+
+    //再查询分页数据
+    $dataModelArray = $manager->selectFromTabel("TASK","id,type,title,text,pic,seetime,datetime",$arr['filter']." limit ".$page.","."10","task");
+
     foreach ($dataModelArray as $value) {
-
-      $total ++;
 
       $singelArray = array('id' => $value->id, 'pic' => $value->pic, 'title' => $value->title,
       'text' => $value->text, 'seetime' => $value->seetime, 'datetime' => $value->datetime,'type' => $value->type,);
 
       $rowArray[] = $singelArray;
     }
+
     $array['rows'] = $rowArray;
     $array['total'] = $total;
     echo json_encode($array);

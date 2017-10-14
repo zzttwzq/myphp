@@ -11,7 +11,6 @@
   $name = $arr["name"]; //用户名
   $password = $arr["password"]; //密码
 
-
   //连接数据库
   $manager = new mysqlConnectManager();
   $manager->connectToDataBase("MYPLAN");
