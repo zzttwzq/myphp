@@ -4,6 +4,7 @@
 
     var $id;
     var $name;
+    var $username;
     var $mobile;
     var $age;
     var $cent;
@@ -59,6 +60,7 @@
 
     if ($type == "login") {
 
+      $model->username = $row["USERNAME"];
       $model->name = $row["NAME"];
       $model->id = $row["ID"];
       $model->mobile = $row["MOBILE"];

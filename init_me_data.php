@@ -4,7 +4,7 @@
 
   $manager = new mysqlConnectManager();
   // //连接数据库
-  // $manager->connectToDataBase("MYPLAN");
+  // $manager->connectToDataBase("ME");
 
   //删除旧的数据库
   $manager->deleteDatabase("ME");
@@ -14,17 +14,17 @@
 
   ////////////////创建登录表并插入数据
   //创建新的表
-  $arrayName = array('id' => "int NOT NULL AUTO_INCREMENT PRIMARY KEY",'name' => "varchar(15) unique",'password' => "varchar(15)",'age' => "int",
+  $arrayName = array('id' => "int NOT NULL AUTO_INCREMENT PRIMARY KEY",'name' => "varchar(15)",'username' => "varchar(15) unique",'password' => "varchar(15)",'age' => "int",
   'mobile' => "varchar(11)",'cent' => "int",'token' => "varchar(40)",'lastlogin' => "varchar(20)",'level' => "int",);
   $manager->createTable("LOGIN",$arrayName);
 
   //添加数据
-  $arrayName = array('name' => "wu",'password' => "111111",'age' => 27,'mobile' => "13023628319",'cent' => 100,
+  $arrayName = array('username' => "wu",'name' => "吴志强",'password' => "111111",'age' => 27,'mobile' => "13023628319",'cent' => 100,
   'token' => "qwertyuiopasdfghjklzxcvbnmkl",'lastlogin' => "2017-9-14 7:41",'level' => 1,);
   $manager->addData("LOGIN",$arrayName);
 
   //查询数据
-  $dataModelArray = $manager->selectFromTabel("LOGIN","id,password,name,age,mobile,cent,token,level","","login");
+  $dataModelArray = $manager->selectFromTabel("LOGIN","id,password,username,name,age,mobile,cent,token,level","","login");
   //数组
   $array = array();
   //总条数
@@ -33,7 +33,7 @@
 
     $total ++;
 
-    $singelArray = array('name' => $value->name, 'age' => $value->age, 'password' => $value->password,
+    $singelArray = array('name' => $value->name,'username' => $value->username, 'age' => $value->age, 'password' => $value->password,
     'mobile' => $value->mobile, 'cent' => $value->cent, 'token' => $value->token, 'level' => $value->token);
     Array_push($array,$singelArray);
   }
