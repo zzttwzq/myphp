@@ -32,13 +32,39 @@
 
     if ($haveusr) {
 
-      $singelArray = array('result' => 1, 'msg' => "登录成功！ ",'name' => $haveusr->name, 'age' => $haveusr->age, 'password' => $haveusr->password, 'mobile' => $haveusr->mobile, 'cent' => $haveusr->cent, 'token' => $haveusr->token);
+      $singelArray = array('result' => 1, 'msg' => "登录成功！ ",'id' => $haveusr->id,'name' => $haveusr->name, 'age' => $haveusr->age, 'password' => $haveusr->password, 'mobile' => $haveusr->mobile, 'cent' => $haveusr->cent, 'token' => "asdfasfasdfasdkklaosdfi1o2398kjsdfk9");
       echo json_encode($singelArray);
+
+      $id = $haveusr->id;
+      //添加数据
+      $arrayName = array('token' => "asdfasfasdfasdkklaosdfi1o2398kjsdfk9");
+      //查询数据
+      $dataModelArray = $manager->updateData("LOGIN",$arrayName,"where id = '$id'");
     }else {
 
       $singelArray = array('result' => 0, 'msg' => "登录失败！ ");
       echo json_encode($singelArray);
     }
+  }
+  else if ($action == "logout") {
+    
+    //添加数据
+    $id = $arr["id"];
+    $arrayName = array('token' => "");
+
+    //登出
+    $result = $manager->updateData("LOGIN",$arrayName,"where id = '$id'");
+
+    if($result < 0){
+
+      $singelArray = array('result' => 1, 'msg' => "登出成功! ");
+      echo json_encode($singelArray);
+    }
+    else{
+
+      $singelArray = array('result' => 0, 'msg' => $obj);
+      echo json_encode($singelArray);
+    }      
   }
   else if ($action == "add") {
 
@@ -55,8 +81,20 @@
     //添加数据
     $arrayName = array('name' => $name,'age' => $age,'password' => $password,'mobile' => $mobile,'cent' => 100,
     'token' => $usr_token,'lastlogin' => $lastlogin,'level' => $level,'yanzhen' => $yanzhen);
-    $manager->addData("LOGIN",$arrayName);
-  }else if ($action == "getuser") {
+    $result = $manager->addData("LOGIN",$arrayName);
+
+    if($result < 0){
+      
+      $singelArray = array('result' => 1, 'msg' => "登出成功! ");
+      echo json_encode($singelArray);
+    }
+    else{
+
+      $singelArray = array('result' => 0, 'msg' => $obj);
+      echo json_encode($singelArray);
+    }  
+  }
+  else if ($action == "getuser") {
 
     $rowArray = array();
     //查询数据

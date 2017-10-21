@@ -23,6 +23,17 @@
     var $text;
     var $seetime;
     var $datetime;
+    var $class;
+    var $tag;
+    var $statue;
+    var $userid;
+    var $brief;
+  }
+
+  class TagModel{
+    
+    var $id;
+    var $name;
     var $type;
   }
 
@@ -52,6 +63,9 @@
       return new TaskModel();
     }else if ($type == "abc") {
 
+      return new TagModel();
+    }else if ($type == "tag") {
+      
       return new ABCModel();
     }
   }
@@ -71,16 +85,28 @@
       $model->level = $row["LEVEL"];
       $model->yanzhen = $row["YANZHEN"];
       $model->password = $row["PASSWORD"];
-    }else if ($type == "task") {
+    }
+    else if ($type == "task") {
 
-      $model->type = $row["TYPE"];
       $model->pic = $row["PIC"];
       $model->id = $row["ID"];
       $model->title = $row["TITLE"];
       $model->text = $row["TEXT"];
       $model->seetime = $row["SEETIME"];
       $model->datetime = $row["DATETIME"];
-    }else if ($type == "abc") {
+      $model->class = $row["CLASS"];
+      $model->tag = $row["TAG"];
+      $model->statue = $row["STATUE"];
+      $model->userid = $row["USERID"];
+      $model->brief = $row["BRIEF"];
+    }
+    else if ($type == "tag") {
+      
+      $model->id = $row["ID"];
+      $model->name = $row["NAME"];
+      $model->type = $row["TYPE"];   
+    }
+    else if ($type == "abc") {
 
       $model->things = $row["THINGS"];
       $model->sence = $row["SENCE"];

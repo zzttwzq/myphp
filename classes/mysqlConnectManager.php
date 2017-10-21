@@ -9,8 +9,7 @@
 
     function __construct(){
 
-      $this->session = mysql_connect("127.0.0.1","root","1111");//测试环境
-      // $this->session = mysql_connect("127.0.0.1","root","111111");//正式环境
+      $this->session = mysql_connect("127.0.0.1","root","1111");
 
       if (!$this->session){
 
@@ -24,42 +23,6 @@
     function connectToDataBase ($dataBase){
 
       mysql_select_db($dataBase, $this->session);
-    }
-
-    function selectFromTabel ($tableName,$fields,$condition,$modelName){
-      //设置字符集
-      mysql_query('SET NAMES utf8');
-
-      //转换成sql语句并转大写
-      $qurel = "SELECT ".$fields;
-      $qurel = strtoupper($qurel);
-      $qurel = $qurel." FROM ".$tableName." ".$condition;
-
-      //获取结果集
-      $result = mysql_query($qurel);
-
-      //判断是否有结果！
-      if ($result) {
-
-        //创建数组
-        $listArray = array();
-        while($row = mysql_fetch_array($result))
-        {
-          //从工厂创建模型
-          $model = createModel($modelName);
-
-          //从工厂方法中给模型赋值
-          setModel($modelName,$model,$row);
-
-          Array_push($listArray,$model);
-        }
-
-        return $listArray;
-      }else{
-
-        $singelArray = array('result' => 0, 'msg' => "查询失败！！！". mysql_error()." sql>>".$qurel);
-        echo json_encode($singelArray);
-      }
     }
 
     function deleteDatabase($dataBaseName){
@@ -124,7 +87,7 @@
       mysql_query('SET NAMES utf8');
 
       $dataVaule = ") VALUES (";
-      $sql = "INSERT INTO ".$tableName." (";
+      $sql = "INSERT INTO $tableName (";
       foreach ($data as $key => $value) {
 
         $sql = $sql.$key.", ";
@@ -132,17 +95,116 @@
       }
       $sql = substr($sql,0,strlen($sql)-2);
       $dataVaule = substr($dataVaule,0,strlen($dataVaule)-2);
-      $sql = $sql.$dataVaule.")";
+      $sql = $sql.$dataVaule.");";
+
+      // echo $sql;
 
       if (mysql_query($sql,$this->session)){
-
-        $singelArray = array('result' => 1, 'msg' => "添加成功！ ");
-        echo json_encode($singelArray);
+        
+        return -1;
       }
       else{
 
-        $singelArray = array('result' => 0, 'msg' => "Error 添加失败！ " . mysql_error()." sql:".$sql);
+        return "Error 添加失败！ " . mysql_error()." sql:".$sql;
+      }
+    }
+
+    function updateData($tableName,$data,$filter){
+      
+      //设置字符集
+      mysql_query('SET NAMES utf8');
+  
+      $sql = "UPDATE $tableName SET ";
+      foreach ($data as $key => $value) {
+
+        $sql = " $sql $key = '$value', ";
+      }
+      $sql = substr($sql,0,strlen($sql)-2);
+      $sql = $sql." $filter;";
+
+      // echo $sql;
+
+      if (mysql_query($sql,$this->session)){
+
+        return -1;
+      }
+      else{
+
+        return "Error 修改失败！ " . mysql_error()." sql:".$sql;
+      }
+    }
+
+    function deleteData($tableName,$filter){
+      
+      //设置字符集
+      mysql_query('SET NAMES utf8');
+      $sql = "DELETE FROM $tableName $filter";
+
+      // echo $sql;
+
+      if (mysql_query($sql,$this->session)){
+
+        return -1;
+      }
+      else{
+
+        return "Error 删除失败！ " . mysql_error()." sql:".$sql;
+      }
+    }
+
+    function selectFromTabel ($tableName,$fields,$condition,$modelName){
+      //设置字符集
+      mysql_query('SET NAMES utf8');
+
+      //转换成sql语句并转大写
+      $sql = "SELECT $fields FROM $tableName $condition;";
+      $sql = strtoupper($sql);
+
+      // echo $sql;
+
+      //获取结果集
+      $result = mysql_query($sql);
+
+      //判断是否有结果！
+      if ($result) {
+
+        //创建数组
+        $listArray = array();
+        while($row = mysql_fetch_array($result))
+        {
+          //从工厂创建模型
+          $model = createModel($modelName);
+
+          //从工厂方法中给模型赋值
+          setModel($modelName,$model,$row);
+
+          Array_push($listArray,$model);
+        }
+
+        return $listArray;
+      }else{
+
+        $singelArray = array('result' => 0, 'msg' => "查询失败！！！". mysql_error()." sql>>".$qurel);
         echo json_encode($singelArray);
+      }
+    }
+    
+    function getlastNum($tablename){
+
+      $result = mysql_query("select max(id) from $tablename"); 
+      //判断是否有结果！
+      if ($result) {
+  
+        //创建数组
+        $listArray = array();
+        while($row = mysql_fetch_array($result)){
+          
+          return $row["max(id)"];
+        }
+
+      }else{
+
+        return 0;
       }
     }
   }
