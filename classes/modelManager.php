@@ -27,6 +27,7 @@
     var $tag;
     var $statue;
     var $userid;
+    var $username;
     var $brief;
   }
 
@@ -98,6 +99,7 @@
       $model->tag = $row["TAG"];
       $model->statue = $row["STATUE"];
       $model->userid = $row["USERID"];
+      $model->username = $row["USERNAME"];
       $model->brief = $row["BRIEF"];
     }
     else if ($type == "tag") {

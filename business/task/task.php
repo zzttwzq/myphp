@@ -54,13 +54,13 @@
     $total = sizeof($dataModelArray);
 
     //再查询分页数据
-    $dataModelArray = $manager->selectFromTabel("TASK","id,title,pic,text,seetime,datetime,class,tag,statue,userid",$arr['filter']." limit ".$page.","."10","task");
+    $dataModelArray = $manager->selectFromTabel("TASK","id,title,pic,text,seetime,datetime,class,tag,statue,userid,username,brief",$arr['filter']." limit ".$page.","."10","task");
     
     foreach ($dataModelArray as $value) {
 
       $singelArray = array('id' => $value->id, 'pic' => $value->pic, 'title' => $value->title,
       'text' => $value->text, 'seetime' => $value->seetime, 'datetime' => $value->datetime,'class' => $value->class,
-      'tag' => $value->tag,'statue' => $value->statue,'userid' => $value->userid);
+      'tag' => $value->tag,'statue' => $value->statue,'userid' => $value->userid,'username' => $value->username,'brief' => $value->brief);
 
       $rowArray[] = $singelArray;
     }

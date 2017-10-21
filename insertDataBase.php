@@ -52,16 +52,29 @@
   ////////////////创建我的日程表，并插入数据
   //创建新的表
   $arrayName = array('id' => "int NOT NULL AUTO_INCREMENT PRIMARY KEY",'title' => "varchar(100)",'brief' => "varchar(100)",'pic' => "varchar(40)",'text' => "varchar(20000)",
-  'seetime' => "int",'datetime' => "datetime",'class'=>'varchar(10)','tag'=>'varchar(50)','statue'=>'varchar(10)','userid'=>'int');
+  'seetime' => "int",'datetime' => "datetime",'class'=>'varchar(10)','tag'=>'varchar(50)','statue'=>'varchar(10)','userid'=>'int','username'=>'varchar(10)',);
   $manager->createTable("TASK",$arrayName);
 
   //添加数据
   $arrayName = array('title' => "第一件事情",'brief' => "做的第一件是，好似拉萨的发送空间的法律思考的风景阿斯顿发阿斯顿啊爽的",'pic' => "http://localhost/myweb/imgs/ios.png",'text' => "我哈哈哈哈哈哈当发生的发低烧",'seetime' => 1,
-  'datetime' => "2017-10-20 20:12:12",'class' => "编程",'tag' => "iOS,socket,http",'statue' => "已发布",'userid' => 1,'seetime' => 10);
+  'datetime' => "2017-10-20 20:12:12",'class' => "编程",'tag' => "iOS,socket,http",'statue' => "已发布",'userid' => 1,'username' => "吴志强",'seetime' => 10);
+  echo $manager->addData("TASK",$arrayName);
+
+  for ($i = 0;$i<100;$i++){
+
+    //添加数据
+    $arrayName = array('title' => "第一件事情",'brief' => "做的第一件是，好似拉萨的发送空间的法律思考的风景阿斯顿发阿斯顿啊爽的",'pic' => "http://localhost/myweb/imgs/ios.png",'text' => "我哈哈哈哈哈哈当发生的发低烧",'seetime' => 1,
+    'datetime' => "2017-10-20 20:12:12",'class' => "编程",'tag' => "iOS,socket,http",'statue' => "已发布",'userid' => 1,'username' => "吴志强",'seetime' => 10);
+    echo $manager->addData("TASK",$arrayName);
+  }
+
+  //添加数据
+  $arrayName = array('title' => "我是最后一个！！！",'brief' => "做的第一件是，好似拉萨的发送空间的法律思考的风景阿斯顿发阿斯顿啊爽的",'pic' => "http://localhost/myweb/imgs/ios.png",'text' => "我哈哈哈哈哈哈当发生的发低烧",'seetime' => 1,
+  'datetime' => "2017-10-20 20:12:12",'class' => "编程",'tag' => "iOS,socket,http",'statue' => "已发布",'userid' => 1,'username' => "吴志强",'seetime' => 10);
   echo $manager->addData("TASK",$arrayName);
 
   //查询数据
-  $dataModelArray = $manager->selectFromTabel("TASK","id,title,pic,text,seetime,datetime,class,tag,statue,userid,brief","","task");
+  $dataModelArray = $manager->selectFromTabel("TASK","id,title,pic,text,seetime,datetime,class,tag,statue,userid,username,brief","","task");
 
   //数组
   $array = array();
@@ -74,7 +87,7 @@
 
     $singelArray = array('id' => $value->id, 'pic' => $value->pic, 'title' => $value->title,
     'text' => $value->text, 'seetime' => $value->seetime, 'datetime' => $value->datetime,'class' => $value->class,
-    'tag' => $value->tag,'statue' => $value->statue,'userid' => $value->userid,'brief' => $value->brief);
+    'tag' => $value->tag,'statue' => $value->statue,'userid' => $value->userid,'username' => $value->username,'brief' => $value->brief);
     Array_push($array,$singelArray);
   }
 
