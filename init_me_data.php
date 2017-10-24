@@ -46,24 +46,35 @@
   //创建新的表
   $arrayName = array(
   'id' => "int NOT NULL AUTO_INCREMENT PRIMARY KEY",
-  'things' => "varchar(40)",'sence'=>'varchar(100)',
-  'thought' => "varchar(200)",'wrongkey' => "varchar(100)",
-  'feel' => "varchar(100)",'action' => "varchar(100)",
-  'newthought' => "varchar(3000)",'newfeelaction' => "varchar(100)",
-  'datetime'=>'datetime');
+  'things' => "varchar(1000)",'sence'=>'varchar(500)',
+  'thought' => "varchar(2000)",'wrongkey' => "varchar(100)",
+  'feel' => "varchar(100)",'action' => "varchar(1000)",
+  'wrongemotionkey' => "varchar(100)",'newthought' => "varchar(5000)",
+  'newfeelaction' => "varchar(100)",'datetime'=>'datetime');
   $manager->createTable("ABC",$arrayName);
 
   //添加数据
   $arrayName = array(
-  'things' => "第一件事情",'sence' => "888",
-  'thought' => "我想哈哈哈",'wrongkey' => "111",
-  'feel' => "222",'action' => "333",
-  'newthought' => "444",'newfeelaction' => "555",
-  'datetime' => "2017-10-04 10:42:34");
+  'things' => "今天有点蒙逼",'sence' => "在办公室上班",
+  'thought' => "大家一定当我是傻逼了，想要伤害我（读心，以自我为中心）",'wrongkey' => "读心,以自我为中心",
+  'feel' => "羞耻90%,愤怒90%",'action' => "1.躲避一他人交流。\n2.躲避以他人互动。",
+  'wrongemotionkey' => "羞耻,愤怒",'newthought' => "1.你的想法可能是错误的，大家可能并没有这么想。2.有一部分跟你意见对立的人可能会这么想，
+  但是大部分分都不会这么想，跟你意见对立的人可能会，但是也不会怎么样。3.你以后可能会有所改观，不会一直这样，不会一只这样抑郁下去的。4.好多人都康复了，你也可以做到，可以做到不吃药就能好。5.你也有好多的朋友，也有关心你爱你的人，并不是所有人离你而去了。",
+  'newfeelaction' => "羞耻(30%),愤怒(30%)",'datetime' => "2017-10-24 10:42:34");
+  $manager->addData("ABC",$arrayName);
+
+  //添加数据
+  $arrayName = array(
+  'things' => "今天有点蒙逼",'sence' => "在办公室上班",
+  'thought' => "大家一定当我是傻逼了，想要伤害我（读心，以自我为中心）",'wrongkey' => "读心,以自我为中心",
+  'feel' => "羞耻90%,愤怒90%",'action' => "1.躲避一他人交流。\n2.躲避以他人互动。",
+  'wrongemotionkey' => "羞耻,愤怒",'newthought' => "1.你的想法可能是错误的，大家可能并没有这么想。2.有一部分跟你意见对立的人可能会这么想，
+  但是大部分分都不会这么想，跟你意见对立的人可能会，但是也不会怎么样。3.你以后可能会有所改观，不会一直这样，不会一只这样抑郁下去的。4.好多人都康复了，你也可以做到，可以做到不吃药就能好。5.你也有好多的朋友，也有关心你爱你的人，并不是所有人离你而去了。",
+  'newfeelaction' => "羞耻(30%),愤怒(30%)",'datetime' => "2017-10-24 10:42:34");
   $manager->addData("ABC",$arrayName);
 
   //查询数据
-  $dataModelArray = $manager->selectFromTabel("ABC","things,sence,thought,wrongkey,feel,action,newthought,newfeelaction,datetime","","abc");
+  $dataModelArray = $manager->selectFromTabel("ABC","things,sence,thought,wrongkey,feel,action,wrongemotionkey,newthought,newfeelaction,datetime","","abc");
 
   //数组
   $array = array();
@@ -76,7 +87,7 @@
 
     $singelArray = array('things' => $value->things, 'sence' => $value->sence, 'thought' => $value->thought,
     'wrongkey' => $value->wrongkey, 'feel' => $value->feel, 'action' => $value->action,'newthought' => $value->newthought,
-    'newfeelaction' => $value->newfeelaction,'datetime' => $value->datetime);
+    'wrongemotionkey' => $value->wrongemotionkey,'newfeelaction' => $value->newfeelaction,'datetime' => $value->datetime);
     Array_push($array,$singelArray);
   }
 

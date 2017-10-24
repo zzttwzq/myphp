@@ -47,6 +47,7 @@
     var $wrongkey;
     var $feel;
     var $action;
+    var $wrongemotionkey;
     var $newthought;
     var $newfeelaction;
     var $datetime;
@@ -116,6 +117,7 @@
       $model->wrongkey = $row["WRONGKEY"];
       $model->feel = $row["FEEL"];
       $model->action = $row["ACTION"];
+      $model->wrongemotionkey = $row["WRONGEMOTIONKEY"];
       $model->newthought = $row["NEWTHOUGHT"];
       $model->newfeelaction = $row["NEWFEELACTION"];
       $model->datetime = $row["DATETIME"];
