@@ -51,7 +51,7 @@
 
   ////////////////创建我的日程表，并插入数据
   //创建新的表
-  $arrayName = array('id' => "int NOT NULL AUTO_INCREMENT PRIMARY KEY",'title' => "varchar(100)",'brief' => "varchar(100)",'pic' => "varchar(40)",'text' => "varchar(20000)",
+  $arrayName = array('id' => "int NOT NULL AUTO_INCREMENT PRIMARY KEY",'title' => "varchar(100)",'brief' => "varchar(100)",'pic' => "varchar(100)",'text' => "varchar(20000)",
   'seetime' => "int",'datetime' => "datetime",'class'=>'varchar(10)','tag'=>'varchar(50)','statue'=>'varchar(10)','userid'=>'int','username'=>'varchar(10)',);
   $manager->createTable("TASK",$arrayName);
 

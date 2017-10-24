@@ -184,7 +184,7 @@
         return $listArray;
       }else{
 
-        $singelArray = array('result' => 0, 'msg' => "查询失败！！！". mysql_error()." sql>>".$qurel);
+        $singelArray = array('result' => 0, 'msg' => "查询失败！！！". mysql_error()." sql>>".$sql);
         echo json_encode($singelArray);
       }
     }

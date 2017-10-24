@@ -29,7 +29,7 @@
     'brief' => $arr['brief'],
     'tag' => $arr['tag'],
     'statue' => $arr['statue'],
-    'userid' => $arr['userid'],
+    'userid' => "1",//$arr['userid'],
     'datetime' => $datetime);
 
     $result = $manager->addData("TASK",$arrayName);
@@ -53,8 +53,8 @@
     $dataModelArray = $manager->selectFromTabel("TASK","id",$arr['filter'],"task");
     $total = sizeof($dataModelArray);
 
-    //再查询分页数据
-    $dataModelArray = $manager->selectFromTabel("TASK","id,title,pic,text,seetime,datetime,class,tag,statue,userid,username,brief",$arr['filter']." limit ".$page.","."10","task");
+     //再查询分页数据
+    $dataModelArray = $manager->selectFromTabel("TASK","id,title,pic,text,seetime,datetime,class,tag,statue,userid,username,brief",$arr['filter']." ORDER BY datetime DESC"." limit ".$page.","."10","task");
     
     foreach ($dataModelArray as $value) {
 
