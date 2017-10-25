@@ -11,18 +11,15 @@
   $manager = new mysqlConnectManager();
   $manager->connectToDataBase("MYPLAN");
 
+  date_default_timezone_set('PRC');
+  $datetime = date('y-m-d h:i:s',time());
+
   if ($action == "addlist") {
-
-    $title = $arr['title'];
-    $text = $arr['text'];
-
-    date_default_timezone_set('PRC');
-    $datetime = date('y-m-d h:i:s',time());
 
     //添加数据
     $arrayName = array(
-    'title' => $title,
-    'text' => $text,
+    'title' => $arr['title'],
+    'text' => $arr['text'],
     'pic' => "http://120.78.131.83/myweb/imgs/".$arr['tag'].".png",
     'seetime' => 0,
     'class' => $arr['class'],
@@ -96,7 +93,14 @@
 
     //添加数据
     $arrayName = array(
-    'name' => $arr['name']);
+      'title' => $arr['title'],
+      'text' => $arr['text'],
+      'pic' => "http://120.78.131.83/myweb/imgs/".$arr['tag'].".png",
+      'class' => $arr['class'],
+      'brief' => $arr['brief'],
+      'tag' => $arr['tag'],
+      'statue' => $arr['statue'],
+      'datetime' => $datetime);
 
     $result = $manager->updateData("TASK",$arrayName,"where id = '$id'");
 
