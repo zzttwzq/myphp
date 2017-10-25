@@ -111,6 +111,7 @@
     }
     else if ($type == "abc") {
 
+      $model->id = $row["ID"];
       $model->things = $row["THINGS"];
       $model->sence = $row["SENCE"];
       $model->thought = $row["THOUGHT"];

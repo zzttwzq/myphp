@@ -35,8 +35,10 @@
     $result = $manager->addData("TASK",$arrayName);
 
     if($result < 0){
+
+      $id = $manager->getlastNum("task");
       
-      $singelArray = array('result' => 1, 'msg' => "添加成功！ ");
+      $singelArray = array('id' => $id,'result' => 1, 'msg' => "添加成功！ ");
       echo json_encode($singelArray);
     }else {
 

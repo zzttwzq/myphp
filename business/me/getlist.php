@@ -53,8 +53,10 @@
     $result = $manager->addData($arr['tablename'],$arrayName);
 
     if($result < 0){
+
+      $id = $manager->getlastNum("ABC");
       
-      $singelArray = array('result' => 1, 'msg' => "添加成功！ ");
+      $singelArray = array('result' => 1,'id' => $id, 'msg' => "添加成功！ ");
       echo json_encode($singelArray);
     }else {
 
@@ -89,7 +91,7 @@
 
     foreach ($dataModelArray as $value) {
 
-    $singelArray = array('things' => $value->things, 'sence' => $value->sence, 'thought' => $value->thought,
+    $singelArray = array('id' => $value->id,'things' => $value->things, 'sence' => $value->sence, 'thought' => $value->thought,
     'wrongkey' => $value->wrongkey, 'feel' => $value->feel, 'action' => $value->action,'newthought' => $value->newthought,        
     'wrongemotionkey' => $value->wrongemotionkey,'newfeelaction' => $value->newfeelaction,'faith' => $value->faith,
     'progress' => $value->progress,'datetime' => $value->datetime);
@@ -116,22 +118,19 @@
         'action' => $arr['action'],
         'wrongemotionkey' => $arr['wrongemotionkey'],
         'newthought' => $arr['newthought'],
-        'newfeelaction' => $arr['newfeelaction'],
-        'datetime' => $datetime);
+        'newfeelaction' => $arr['newfeelaction']);
     }else if ($arr['tablename'] == "EXP"){
 
       $arrayName = array(
         'things' => $arr['things'],
         'sence' => $arr['sence'],
         'progress' => $arr['progress'],
-        'feel' => $arr['feel'],
-        'datetime' => $datetime);
+        'feel' => $arr['feel']);
     }else if ($arr['tablename'] == "FAT"){
         $arrayName = array(
         'things' => $arr['things'],
         'sence' => $arr['sence'],
-        'faith' => $arr['faith'],
-        'datetime' => $datetime);
+        'faith' => $arr['faith']);
     }
 
     $result = $manager->updateData($arr['tablename'],$arrayName,"where id = '$id'");
