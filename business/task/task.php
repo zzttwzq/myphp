@@ -99,8 +99,7 @@
       'class' => $arr['class'],
       'brief' => $arr['brief'],
       'tag' => $arr['tag'],
-      'statue' => $arr['statue'],
-      'datetime' => $datetime);
+      'statue' => $arr['statue']);
 
     $result = $manager->updateData("TASK",$arrayName,"where id = '$id'");
 
