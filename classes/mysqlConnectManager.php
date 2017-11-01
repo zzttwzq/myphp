@@ -161,8 +161,6 @@
       $sql = strtoupper($sql);
       $sql = $sql." ".$condition;
 
-      // echo $sql;
-
       //获取结果集
       $result = mysql_query($sql);
 

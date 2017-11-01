@@ -51,7 +51,7 @@
     var $newthought;
     var $newfeelaction;
     var $datetime;
-    var $process;
+    var $progress;
     var $faith;
   }
 
@@ -122,7 +122,7 @@
       $model->newthought = $row["NEWTHOUGHT"];
       $model->newfeelaction = $row["NEWFEELACTION"];
       $model->datetime = $row["DATETIME"];
-      $model->process = $row["PROCESS"];
+      $model->progress = $row["PROGRESS"];
       $model->faith = $row["FAITH"];
     }
   }

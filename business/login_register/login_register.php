@@ -1,11 +1,9 @@
 <?php
   include_once "../../classes/mysqlConnectManager.php";
 
-
   //获取数据
   $raw_post_data = file_get_contents('php://input');
   $arr = json_decode($raw_post_data,true);
-
 
   $action = $_GET['action'];  //请求方式
   $name = $arr["name"]; //用户名
@@ -84,8 +82,10 @@
     $result = $manager->addData("LOGIN",$arrayName);
 
     if($result < 0){
+
+      $id = $manager->getlastNum("task");
       
-      $singelArray = array('result' => 1, 'msg' => "登出成功! ");
+      $singelArray = array('result' => 1, 'msg' => "登出成功! ",'id' => $id,'token' => $usr_token);
       echo json_encode($singelArray);
     }
     else{

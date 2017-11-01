@@ -55,7 +55,7 @@
 
   //添加数据
   $arrayName = array(
-  'things' => "今天有点蒙逼",'sence' => "在办公室上班",
+  'things' => "我是第一条",'sence' => "在办公室上班",
   'thought' => "大家一定当我是傻逼了，想要伤害我（读心，以自我为中心）",'wrongkey' => "读心,以自我为中心",
   'feel' => "羞耻90%,愤怒90%",'action' => "1.躲避一他人交流。\n2.躲避以他人互动。",
   'wrongemotionkey' => "羞耻,愤怒",'newthought' => "1.你的想法可能是错误的，大家可能并没有这么想。2.有一部分跟你意见对立的人可能会这么想，
@@ -63,15 +63,28 @@
   'newfeelaction' => "羞耻(30%),愤怒(30%)",'datetime' => "2017-10-24 10:42:34");
   $manager->addData("ABC",$arrayName);
 
-  //添加数据
-  $arrayName = array(
-  'things' => "今天有点蒙逼",'sence' => "在办公室上班",
-  'thought' => "大家一定当我是傻逼了，想要伤害我（读心，以自我为中心）",'wrongkey' => "读心,以自我为中心",
-  'feel' => "羞耻90%,愤怒90%",'action' => "1.躲避一他人交流。\n2.躲避以他人互动。",
-  'wrongemotionkey' => "羞耻,愤怒",'newthought' => "1.你的想法可能是错误的，大家可能并没有这么想。2.有一部分跟你意见对立的人可能会这么想，
-  但是大部分分都不会这么想，跟你意见对立的人可能会，但是也不会怎么样。3.你以后可能会有所改观，不会一直这样，不会一只这样抑郁下去的。4.好多人都康复了，你也可以做到，可以做到不吃药就能好。5.你也有好多的朋友，也有关心你爱你的人，并不是所有人离你而去了。",
-  'newfeelaction' => "羞耻(30%),愤怒(30%)",'datetime' => "2017-10-24 10:42:34");
-  $manager->addData("ABC",$arrayName);
+  for ($i = 0;$i<100;$i++){
+
+      //添加数据
+    $arrayName = array(
+    'things' => "今天有点蒙逼",'sence' => "在办公室上班",
+    'thought' => "大家一定当我是傻逼了，想要伤害我（读心，以自我为中心）",'wrongkey' => "读心,以自我为中心",
+    'feel' => "羞耻90%,愤怒90%",'action' => "1.躲避一他人交流。\n2.躲避以他人互动。",
+    'wrongemotionkey' => "羞耻,愤怒",'newthought' => "1.你的想法可能是错误的，大家可能并没有这么想。2.有一部分跟你意见对立的人可能会这么想，
+    但是大部分分都不会这么想，跟你意见对立的人可能会，但是也不会怎么样。3.你以后可能会有所改观，不会一直这样，不会一只这样抑郁下去的。4.好多人都康复了，你也可以做到，可以做到不吃药就能好。5.你也有好多的朋友，也有关心你爱你的人，并不是所有人离你而去了。",
+    'newfeelaction' => "羞耻(30%),愤怒(30%)",'datetime' => "2017-10-24 10:42:34");
+    $manager->addData("ABC",$arrayName);
+  }
+
+    //添加数据
+    $arrayName = array(
+      'things' => "我是最后一条",'sence' => "在办公室上班",
+      'thought' => "大家一定当我是傻逼了，想要伤害我（读心，以自我为中心）",'wrongkey' => "读心,以自我为中心",
+      'feel' => "羞耻90%,愤怒90%",'action' => "1.躲避一他人交流。\n2.躲避以他人互动。",
+      'wrongemotionkey' => "羞耻,愤怒",'newthought' => "1.你的想法可能是错误的，大家可能并没有这么想。2.有一部分跟你意见对立的人可能会这么想，
+      但是大部分分都不会这么想，跟你意见对立的人可能会，但是也不会怎么样。3.你以后可能会有所改观，不会一直这样，不会一只这样抑郁下去的。4.好多人都康复了，你也可以做到，可以做到不吃药就能好。5.你也有好多的朋友，也有关心你爱你的人，并不是所有人离你而去了。",
+      'newfeelaction' => "羞耻(30%),愤怒(30%)",'datetime' => "2017-10-24 10:42:34");
+      $manager->addData("ABC",$arrayName);
 
   //查询数据
   $dataModelArray = $manager->selectFromTabel("ABC","things,sence,thought,wrongkey,feel,action,wrongemotionkey,newthought,newfeelaction,datetime","","abc");
@@ -101,21 +114,19 @@
   $arrayName = array(
   'id' => "int NOT NULL AUTO_INCREMENT PRIMARY KEY",
   'things' => "varchar(40)",'sence'=>'varchar(100)',
-  'thought' => "varchar(200)",'wrongkey' => "varchar(100)",
-  'process' => "varchar(3000)",'newthought' => "varchar(1000)",
+  'feel' => "varchar(1000)",'progress' => "varchar(2000)",
   'datetime'=>'datetime');
   $manager->createTable("EXP",$arrayName);
 
   //添加数据
   $arrayName = array(
   'things' => "第一实验",'sence' => "888",
-  'thought' => "我想哈哈哈",'wrongkey' => "111",
-  'process' => "222",'newthought' => "333",
+  'feel' => "111",'progress' => "222",
   'datetime' => "2017-10-04 10:42:34");
   $manager->addData("EXP",$arrayName);
 
   //查询数据
-  $dataModelArray = $manager->selectFromTabel("EXP","things,sence,thought,wrongkey,process,newthought,datetime","","abc");
+  $dataModelArray = $manager->selectFromTabel("EXP","things,sence,feel,progress,datetime","","abc");
 
   //数组
   $array = array();
@@ -126,8 +137,8 @@
 
     $total ++;
 
-    $singelArray = array('things' => $value->things, 'sence' => $value->sence, 'thought' => $value->thought,
-    'wrongkey' => $value->wrongkey, 'process' => $value->process, 'newthought' => $value->newthought,'datetime' => $value->datetime);
+    $singelArray = array('things' => $value->things, 'sence' => $value->sence, 'feel' => $value->feel,
+    'progress' => $value->progress,'datetime' => $value->datetime);
     Array_push($array,$singelArray);
   }
 
@@ -139,22 +150,18 @@
   //创建新的表
   $arrayName = array(
   'id' => "int NOT NULL AUTO_INCREMENT PRIMARY KEY",
-  'things' => "varchar(40)",'sence'=>'varchar(100)',
-  'thought' => "varchar(200)",'wrongkey' => "varchar(100)",
-  'process' => "varchar(3000)",'faith' => "varchar(100)",
-  'datetime'=>'datetime');
+  'sence' => "varchar(200)",'things' => "varchar(3000)",
+  'faith' => "varchar(100)",'datetime'=>'datetime');
   $manager->createTable("FAT",$arrayName);
 
   //添加数据
   $arrayName = array(
   'things' => "第一相信",'sence' => "888",
-  'thought' => "我想哈哈哈",'wrongkey' => "111",
-  'process' => "222",'faith' => "333",
-  'datetime' => "2017-10-04 10:42:34");
+  'faith' => "我想哈哈哈",'datetime' => "2017-10-04 10:42:34");
   $manager->addData("FAT",$arrayName);
 
   //查询数据
-  $dataModelArray = $manager->selectFromTabel("FAT","things,sence,thought,wrongkey,process,faith,datetime","","abc");
+  $dataModelArray = $manager->selectFromTabel("FAT","things,sence,faith,datetime","","abc");
 
   //数组
   $array = array();
@@ -165,8 +172,7 @@
 
     $total ++;
 
-    $singelArray = array('things' => $value->things, 'sence' => $value->sence, 'thought' => $value->thought,
-    'wrongkey' => $value->wrongkey, 'process' => $value->process,'faith' => $value->faith,'datetime' => $value->datetime);
+    $singelArray = array('things' => $value->things, 'sence' => $value->sence,'faith' => $value->faith,'datetime' => $value->datetime);
     Array_push($array,$singelArray);
   }
 

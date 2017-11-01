@@ -26,7 +26,7 @@
     'brief' => $arr['brief'],
     'tag' => $arr['tag'],
     'statue' => $arr['statue'],
-    'userid' => "1",//$arr['userid'],
+    'username' => $arr['username'],
     'datetime' => $datetime);
 
     $result = $manager->addData("TASK",$arrayName);

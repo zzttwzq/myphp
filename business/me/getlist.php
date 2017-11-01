@@ -126,7 +126,9 @@
         'sence' => $arr['sence'],
         'progress' => $arr['progress'],
         'feel' => $arr['feel']);
+
     }else if ($arr['tablename'] == "FAT"){
+      
         $arrayName = array(
         'things' => $arr['things'],
         'sence' => $arr['sence'],
