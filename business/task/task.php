@@ -92,14 +92,23 @@
     $id = $arr["id"];
 
     //添加数据
-    $arrayName = array(
-      'title' => $arr['title'],
-      'text' => $arr['text'],
-      'pic' => "http://120.78.131.83/myweb/imgs/".$arr['tag'].".png",
-      'class' => $arr['class'],
-      'brief' => $arr['brief'],
-      'tag' => $arr['tag'],
-      'statue' => $arr['statue']);
+    $arrayName;
+
+    if ($arr["seetime"]){
+
+      $arrayName = array(
+        'seetime' => $arr['seetime'],);
+    }else{
+
+      $arrayName = array(
+        'title' => $arr['title'],
+        'text' => $arr['text'],
+        'pic' => "http://120.78.131.83/myweb/imgs/".$arr['tag'].".png",
+        'class' => $arr['class'],
+        'brief' => $arr['brief'],
+        'tag' => $arr['tag'],
+        'statue' => $arr['statue']);
+    }
 
     $result = $manager->updateData("TASK",$arrayName,"where id = '$id'");
 

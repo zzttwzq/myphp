@@ -70,7 +70,7 @@
     $total = 0;//总条数
 
     //先查一遍总的数据
-    $dataModelArray = $manager->selectFromTabel($arr['tablename'],"id","","abc");
+    $dataModelArray = $manager->selectFromTabel($arr['tablename'],"id",$arr['filter'],"abc");
     $total = sizeof($dataModelArray);
 
      //再查询分页数据

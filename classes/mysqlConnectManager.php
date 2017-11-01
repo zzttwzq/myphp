@@ -157,8 +157,9 @@
       mysql_query('SET NAMES utf8');
 
       //转换成sql语句并转大写
-      $sql = "SELECT $fields FROM $tableName $condition;";
+      $sql = "SELECT $fields FROM $tableName";
       $sql = strtoupper($sql);
+      $sql = $sql." ".$condition;
 
       // echo $sql;
 
