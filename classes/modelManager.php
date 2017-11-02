@@ -53,6 +53,7 @@
     var $datetime;
     var $progress;
     var $faith;
+    var $score;
   }
 
   function createModel($type){
@@ -124,6 +125,7 @@
       $model->datetime = $row["DATETIME"];
       $model->progress = $row["PROGRESS"];
       $model->faith = $row["FAITH"];
+      $model->score = $row["SCORE"];
     }
   }
 
