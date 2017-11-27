@@ -34,14 +34,14 @@
     if($result < 0){
 
       $id = $manager->getlastNum("task");
-      
+
       $singelArray = array('id' => $id,'result' => 1, 'msg' => "添加成功！ ");
       echo json_encode($singelArray);
     }else {
 
       $singelArray = array('result' => 0, 'msg' => $result);
       echo json_encode($singelArray);
-    }    
+    }
   }
   else if ($action == "getlist") {
     $rowArray = array();
@@ -54,7 +54,7 @@
 
      //再查询分页数据
     $dataModelArray = $manager->selectFromTabel("TASK","id,title,pic,text,seetime,datetime,class,tag,statue,userid,username,brief",$arr['filter']." ORDER BY datetime DESC"." limit ".$page.","."10","task");
-    
+
     foreach ($dataModelArray as $value) {
 
       $singelArray = array('id' => $value->id, 'pic' => $value->pic, 'title' => $value->title,
@@ -76,7 +76,7 @@
     //先查一遍总的数据
     $dataModelArray = $manager->selectFromTabel("TAG","id,name,type",$arr['filter']." limit ".$page.","."10","tag");
     $total = sizeof($dataModelArray);
-    
+
     foreach ($dataModelArray as $value) {
 
       $singelArray = array('id' => $value->id,'name' => $value->name, 'type' => $value->type,);
@@ -88,7 +88,7 @@
     echo json_encode($array);
   }
   else if ($action == "updatelist") {
-    
+
     $id = $arr["id"];
 
     //添加数据
@@ -113,20 +113,20 @@
     $result = $manager->updateData("TASK",$arrayName,"where id = '$id'");
 
     if($result < 0){
-      
+
       $singelArray = array('result' => 1, 'msg' => "删除成功！ ");
       echo json_encode($singelArray);
     }else {
 
       $singelArray = array('result' => 0, 'msg' => $result);
       echo json_encode($singelArray);
-    }    
+    }
   }
   else if ($action == "deletelist") {
-    
+
     $id = $arr["id"];
     $result = $manager->deleteData("TASK","where id = ".$id);
-    
+
     if($result < 0){
 
       $singelArray = array('result' => 1, 'msg' => "删除成功！ ");
@@ -138,7 +138,7 @@
     }
   }
   else if ($action == "addtag") {
-    
+
     //添加数据
     $arrayName = array(
     'type' => $arr['type'],
@@ -149,7 +149,7 @@
     if($result < 0){
 
       $id = $manager->getlastNum("tag");
-      
+
       $singelArray = array('result' => 1, 'msg' => "添加成功！ ",'id' => $id);
       echo json_encode($singelArray);
     }else {
@@ -159,7 +159,7 @@
     }
   }
   else if ($action == "updatetag") {
-    
+
     $id = $arr["id"];
 
     //添加数据
@@ -168,21 +168,6 @@
 
     $result = $manager->updateData("TAG",$arrayName,"where id = '$id'");
 
-    if($result < 0){
-      
-      $singelArray = array('result' => 1, 'msg' => "删除成功！ ");
-      echo json_encode($singelArray);
-    }else {
-
-      $singelArray = array('result' => 0, 'msg' => $result);
-      echo json_encode($singelArray);
-    }    
-  }
-  else if ($action == "deletetag") {
-    
-    $id = $arr["id"];
-    $result = $manager->deleteData("TAG","where id = ".$id);
-    
     if($result < 0){
 
       $singelArray = array('result' => 1, 'msg' => "删除成功！ ");
@@ -193,5 +178,20 @@
       echo json_encode($singelArray);
     }
   }
-  
+  else if ($action == "deletetag") {
+
+    $id = $arr["id"];
+    $result = $manager->deleteData("TAG","where id = ".$id);
+
+    if($result < 0){
+
+      $singelArray = array('result' => 1, 'msg' => "删除成功！ ");
+      echo json_encode($singelArray);
+    }else {
+
+      $singelArray = array('result' => 0, 'msg' => $result);
+      echo json_encode($singelArray);
+    }
+  }
+
  ?>

@@ -5,7 +5,7 @@
   //获取类型
   $action = $_GET['action'];
   //获取一个manager
-  $manager = new dbManager("ME1");
+  $manager = new dbManager("PROGMAN");
   //获取post过来的json数据
   $raw_post_data = file_get_contents('php://input');
   $jsonData = json_decode($raw_post_data,true);
