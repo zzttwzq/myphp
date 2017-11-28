@@ -1,6 +1,9 @@
 <?php
 
-  class LoginModel{
+  /**
+   * 登录模型
+   */
+  class UserModel{
     var $id;
     var $name;
     var $username;
@@ -14,31 +17,26 @@
     var $password;
   }
 
-  class TaskModel{
-
+  /**
+   * 博客列表模型
+   */
+  class BlogModel{
     var $id;
-    var $pic;
+    var $img;
     var $title;
-    var $text;
-    var $seetime;
-    var $datetime;
-    var $class;
-    var $tag;
-    var $statue;
-    var $userid;
-    var $username;
     var $brief;
+    var $text;
+    var $datetime;
+    var $share;
+    var $comment;
+    var $star;
+    var $tag;
   }
 
-  class TagModel{
-
-    var $id;
-    var $name;
-    var $type;
-  }
-
-  class ABCModel{
-
+  /**
+   * abc模型
+   */
+  class ABC_Model{
     var $id;
     var $things;
     var $sence;
@@ -55,27 +53,17 @@
     var $score;
   }
 
-  function createModel($type){
+  /**
+   * 创建模型
+   * $type 模型类型
+   * $row 数据集
+   * return 返回创建的模型
+   */
+  function getModel($type,$row){
 
     if ($type == "login") {
 
-      return new LoginModel();
-    }else if ($type == "task") {
-
-      return new TaskModel();
-    }else if ($type == "abc") {
-
-      return new TagModel();
-    }else if ($type == "tag") {
-
-      return new ABCModel();
-    }
-  }
-
-  function setModel($type,$model,$row){
-
-    if ($type == "login") {
-
+      $model = new UserModel();
       $model->username = $row["USERNAME"];
       $model->name = $row["NAME"];
       $model->id = $row["ID"];
@@ -87,30 +75,28 @@
       $model->level = $row["LEVEL"];
       $model->yanzhen = $row["YANZHEN"];
       $model->password = $row["PASSWORD"];
+
+      return $model;
     }
     else if ($type == "task") {
 
-      $model->pic = $row["PIC"];
+      $model = new BlogModel();
       $model->id = $row["ID"];
+      $model->img = $row["IMG"];
+      $model->brief = $row["BRIEF"];
       $model->title = $row["TITLE"];
       $model->text = $row["TEXT"];
-      $model->seetime = $row["SEETIME"];
       $model->datetime = $row["DATETIME"];
-      $model->class = $row["CLASS"];
+      $model->share = $row["SHARE"];
+      $model->comment = $row["COMMENT"];
+      $model->star = $row["STAR"];
       $model->tag = $row["TAG"];
-      $model->statue = $row["STATUE"];
-      $model->userid = $row["USERID"];
-      $model->username = $row["USERNAME"];
-      $model->brief = $row["BRIEF"];
-    }
-    else if ($type == "tag") {
 
-      $model->id = $row["ID"];
-      $model->name = $row["NAME"];
-      $model->type = $row["TYPE"];
+      return $model;
     }
     else if ($type == "abc") {
 
+      $model = new ABC_Model();
       $model->id = $row["ID"];
       $model->things = $row["THINGS"];
       $model->sence = $row["SENCE"];
@@ -125,7 +111,8 @@
       $model->progress = $row["PROGRESS"];
       $model->faith = $row["FAITH"];
       $model->score = $row["SCORE"];
+
+      return $model;
     }
   }
-
  ?>

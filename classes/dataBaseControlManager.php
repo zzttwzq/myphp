@@ -1,7 +1,7 @@
 <?php
 
   require 'lib.php';
-  require 'modelManager.php';
+  require 'newDataModel.php';
 
   /**
    * 数据库管理对象
@@ -295,13 +295,8 @@
         //用json返回成功信息
         foreach ($data as $row) {
 
-          //从工厂创建模型
-          $model = createModel($modelName);
-
-          //从工厂方法中给模型赋值
-          setModel($modelName,$model,$row);
-
-          Array_push($listArray,$model);
+          //从工厂方法中给模型赋值,并放入到数组中去
+          Array_push($listArray,getModel($modelName,$row));
         }
 
         return $listArray;

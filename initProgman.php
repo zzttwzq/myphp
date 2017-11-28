@@ -67,4 +67,30 @@ require 'classes/dataBaseControlManager.php';
   echo $manager->addData("TASK",$arrayName);
   echo "<br>";
 
+  // 添加数据
+  $arrayName = array('img' => "http://localhost/progman/imgs/angular.png",
+  'title' => "angularjs从入门到出门",
+  'brief' => "angular概览",
+  'text' => "啥也没有",
+  'datetime' => "2017-11-27 15:45",
+  'share' => "100",
+  'comment' => "99",
+  'star' => "10",
+  'tag' => "angular",);
+  echo $manager->addData("TASK",$arrayName);
+  echo "<br>";
+
+  // 添加数据
+  $arrayName = array('img' => "http://localhost/progman/imgs/angular.png",
+  'title' => "angularjs从入门到出门",
+  'brief' => "angular概览",
+  'text' => "啥也没有",
+  'datetime' => "2017-11-27 15:45",
+  'share' => "100",
+  'comment' => "99",
+  'star' => "10",
+  'tag' => "angular",);
+  echo $manager->addData("TASK",$arrayName);
+  echo "<br>";
+
  ?>
