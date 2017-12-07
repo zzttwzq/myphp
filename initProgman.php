@@ -77,7 +77,7 @@ require 'classes/dataBaseControlManager.php';
   'comment' => "99",
   'star' => "10",
   'tag' => "angular",);
-  echo $manager->addData("TASK",$arrayName);
+  $manager->addData("TASK",$arrayName);
   echo "<br>";
 
   // 添加数据
@@ -90,7 +90,21 @@ require 'classes/dataBaseControlManager.php';
   'comment' => "99",
   'star' => "10",
   'tag' => "angular",);
-  echo $manager->addData("TASK",$arrayName);
+  $manager->addData("TASK",$arrayName);
   echo "<br>";
 
+
+  //-----------初始化日程
+  // 创建新的表
+  $arrayName = array('id' => "int NOT NULL AUTO_INCREMENT PRIMARY KEY",
+  'datetime' => "varchar(8) unique",
+  'score' => "int",);
+  $manager->createTable("DATE",$arrayName);
+  echo "<br>";
+
+  // 添加数据
+  $arrayName = array('datetime' => "2017125",
+  'score' => "5",);
+  $manager->addData("DATE",$arrayName);
+  echo "<br>";
  ?>

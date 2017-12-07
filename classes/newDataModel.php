@@ -31,6 +31,7 @@
     var $comment;
     var $star;
     var $tag;
+    var $score;
   }
 
   /**
@@ -91,6 +92,7 @@
       $model->comment = $row["COMMENT"];
       $model->star = $row["STAR"];
       $model->tag = $row["TAG"];
+      $model->score = $row["SCORE"];
 
       return $model;
     }

@@ -26,4 +26,101 @@
       sendJson(1,"操作成功！",$result);
     }
   }
+  else if ($action == "addTaskList") {
+
+    //添加数据
+    $arrayName = array(
+    'img' => $arr['img'],
+    'title' => $arr['title'],
+    'brief' => $arr['brief'],
+    'text' => $arr['text'],
+    'datetime' => date("Y-m-d H:i:s"),
+    'share' => 0,
+    'comment' => 0,
+    'star' => 0,
+    'tag' => $arr['tag']);
+
+    //查询数据
+    $result = $manager->addData("TASK",$arrayName);
+
+    if ($result["result"]) {
+
+      sendJson(0,$result["msg"],null);
+    }else{
+
+      sendJson(1,"操作成功！",$result);
+    }
+  }
+  else if ($action == "updateTaskList") {
+
+    $ids = $jsonData['id'];
+
+    //添加数据
+    $arrayName = array(
+    'img' => $jsonData['img'],
+    'title' => $jsonData['title'],
+    'brief' => $jsonData['brief'],
+    'text' => $jsonData['text'],
+    'tag' => $jsonData['tag']);
+
+    //查询数据
+    $result = $manager->updateData("TASK",$arrayName,"where id=$ids");
+
+    if ($result["result"]) {
+
+      sendJson(0,$result["msg"],null);
+    }else{
+
+      sendJson(1,"操作成功！",$result);
+    }
+  }
+  else if ($action == "deleteTaskList") {
+
+    //添加数据
+    $ids = $jsonData['id'];
+
+    //查询数据
+    $result = $manager->deleteData("TASK","where id=$ids");
+
+    if ($result["result"]) {
+
+      sendJson(0,$result["msg"],null);
+    }else{
+
+      sendJson(1,"操作成功！",$result);
+    }
+  }
+  else if ($action == "getScoreList") {
+
+    //查询数据
+    $result = $manager->selectFromTabel("DATE","id,datetime,score","","task");
+
+    if ($result["result"]) {
+
+      sendJson(0,$result["msg"],null);
+    }else{
+
+      sendJson(1,"操作成功！",$result);
+    }
+  }
+  else if ($action == "addScoreList") {
+
+    //添加数据
+    $arrayName = array(
+    'datetime' => $jsonData['datetime'],
+    'score' => $jsonData['score'],);
+
+    //查询数据
+    $result = $manager->addData("DATE",$arrayName);
+
+    var_dump($result);
+
+    if ($result["result"]) {
+
+      sendJson(0,$result["msg"],null);
+    }else{
+
+      sendJson(1,"操作成功！",$result);
+    }
+  }
  ?>

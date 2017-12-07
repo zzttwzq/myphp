@@ -1,5 +1,7 @@
 <?php
 
+  date_default_timezone_set('PRC'); //设置中国时区 
+
   /**
    * 发送json数据
    * $result 状态码 0:错误,1:表示成功,其他待定
