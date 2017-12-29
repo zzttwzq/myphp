@@ -30,7 +30,7 @@
 
     $result = $manager->addData("TASK",$arrayName);
 
-    if($result < 0){
+    if($result == 1){
 
       $id = $manager->getlastNum("task");
 
@@ -111,9 +111,9 @@
 
     $result = $manager->updateData("TASK",$arrayName,"where id = '$id'");
 
-    if($result < 0){
+    if($result == 1){
 
-      $singelArray = array('result' => 1, 'msg' => "删除成功！ ");
+      $singelArray = array('result' => 1, 'msg' => "修改成功！ ");
       echo json_encode($singelArray);
     }else {
 
@@ -126,7 +126,7 @@
     $id = $arr["id"];
     $result = $manager->deleteData("TASK","where id = ".$id);
 
-    if($result < 0){
+    if($result == 1){
 
       $singelArray = array('result' => 1, 'msg' => "删除成功！ ");
       echo json_encode($singelArray);
