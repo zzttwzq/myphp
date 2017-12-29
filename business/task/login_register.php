@@ -53,7 +53,7 @@
     //登出
     $result = $manager->updateData("LOGIN",$arrayName,"where id = '$id'");
 
-    if($result < 0){
+    if($result == 1){
 
       $singelArray = array('result' => 1, 'msg' => "登出成功! ");
       echo json_encode($singelArray);
@@ -81,11 +81,11 @@
     'token' => $usr_token,'lastlogin' => $lastlogin,'level' => $level,'yanzhen' => $yanzhen);
     $result = $manager->addData("LOGIN",$arrayName);
 
-    if($result < 0){
+    if($result == 1){
 
       $id = $manager->getlastNum("task");
 
-      $singelArray = array('result' => 1, 'msg' => "登出成功! ",'id' => $id,'token' => $usr_token);
+      $singelArray = array('result' => 1, 'msg' => "添加成功! ",'id' => $id,'token' => $usr_token);
       echo json_encode($singelArray);
     }
     else{
