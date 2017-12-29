@@ -22,7 +22,7 @@
    */
   class BlogModel{
     var $id;
-    var $img;
+    var $pic;
     var $title;
     var $brief;
     var $text;
@@ -83,7 +83,7 @@
 
       $model = new BlogModel();
       $model->id = $row["ID"];
-      $model->img = $row["IMG"];
+      $model->pic = $row["PIC"];
       $model->brief = $row["BRIEF"];
       $model->title = $row["TITLE"];
       $model->text = $row["TEXT"];
