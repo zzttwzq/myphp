@@ -19,7 +19,7 @@
     $arrayName = array(
     'title' => $arr['title'],
     'text' => $arr['text'],
-    'pic' => "http://120.78.131.83/myweb/imgs/".$arr['tag'].".png",
+    'pic' => "http://120.78.131.83/myweb2/imgs/".$arr['tag'].".png",
     'seetime' => 0,
     'class' => $arr['class'],
     'brief' => $arr['brief'],
