@@ -4,12 +4,12 @@
   <title>重置数据</title>
 </head>
 <body>
-  
+
 <?php
 
-  include_once "classes/mysqlConnectManager.php";
+  include_once "classes/dataBaseControlManager.php";
 
-  $manager = new mysqlConnectManager();
+  $manager = new dbManager("MYPLAN");
   // //连接数据库
   // $manager->connectToDataBase("MYPLAN");
 

@@ -289,6 +289,7 @@
 
       $listArray = array();
       $result = $this->query($sql);
+
       if ($result["result"] == 1){
 
         $data = $result["data"];

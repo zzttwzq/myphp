@@ -1,9 +1,9 @@
 <?php
 
-require 'classes/dataBaseControlManager.php';
+  include_once "classes/dataBaseControlManager.php";
 
 
-  $manager = new dbManager("");
+  $manager = new dbManager("PROGMAN");
 
   $manager->deleteDatabase("PROGMAN");
   echo "<br>";

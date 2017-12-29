@@ -1,8 +1,8 @@
 <?php
 
-  include_once "classes/mysqlConnectManager.php";
+include_once "classes/dataBaseControlManager.php";
 
-  $manager = new mysqlConnectManager();
+  $manager = new dbManager("ME");
   // //连接数据库
   // $manager->connectToDataBase("ME");
 

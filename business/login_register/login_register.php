@@ -1,5 +1,5 @@
 <?php
-  include_once "../../classes/mysqlConnectManager.php";
+  include_once "../../classes/dataBaseControlManager.php";
 
   //获取数据
   $raw_post_data = file_get_contents('php://input');
@@ -10,8 +10,8 @@
   $password = $arr["password"]; //密码
 
   //连接数据库
-  $manager = new mysqlConnectManager();
-  $manager->connectToDataBase("MYPLAN");
+  $manager = new dbManager("MYPLAN");
+  // $manager->connectToDataBase("MYPLAN");
   if ($action == "login") {
 
     $haveusr;
@@ -45,7 +45,7 @@
     }
   }
   else if ($action == "logout") {
-    
+
     //添加数据
     $id = $arr["id"];
     $arrayName = array('token' => "");
@@ -62,7 +62,7 @@
 
       $singelArray = array('result' => 0, 'msg' => $obj);
       echo json_encode($singelArray);
-    }      
+    }
   }
   else if ($action == "add") {
 
@@ -84,7 +84,7 @@
     if($result < 0){
 
       $id = $manager->getlastNum("task");
-      
+
       $singelArray = array('result' => 1, 'msg' => "登出成功! ",'id' => $id,'token' => $usr_token);
       echo json_encode($singelArray);
     }
@@ -92,7 +92,7 @@
 
       $singelArray = array('result' => 0, 'msg' => $obj);
       echo json_encode($singelArray);
-    }  
+    }
   }
   else if ($action == "getuser") {
 

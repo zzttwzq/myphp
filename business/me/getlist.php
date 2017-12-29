@@ -1,6 +1,5 @@
 <?php
-
-  include_once "../../classes/mysqlConnectManager.php";
+  include_once "../../classes/dataBaseControlManager.php";
 
   $action = $_GET['action'];
   //获取数据
@@ -8,9 +7,7 @@
   $arr = json_decode($raw_post_data,true);
 
   //连接数据库
-  $manager = new mysqlConnectManager();
-  $manager->connectToDataBase("ME");
-
+  $manager = new dbManager("ME");
   if ($action == "addlist") {
 
     $title = $arr['title'];

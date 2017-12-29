@@ -1,6 +1,6 @@
 <?php
 
-  include_once "../../classes/mysqlConnectManager.php";
+  include_once "../../classes/dataBaseControlManager.php";
 
   $action = $_GET['action'];
   //获取数据
@@ -8,8 +8,7 @@
   $arr = json_decode($raw_post_data,true);
 
   //连接数据库
-  $manager = new mysqlConnectManager();
-  $manager->connectToDataBase("MYPLAN");
+  $manager = new dbManager("MYPLAN");
 
   date_default_timezone_set('PRC');
   $datetime = date('y-m-d h:i:s',time());
