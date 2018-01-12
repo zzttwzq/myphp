@@ -11,7 +11,6 @@
 
   //连接数据库
   $manager = new dbManager("MYPLAN");
-  // $manager->connectToDataBase("MYPLAN");
   if ($action == "login") {
 
     $haveusr;
