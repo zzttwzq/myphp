@@ -19,7 +19,7 @@
   //删除旧的数据库
   $manager->deleteDatabase("MYPLAN");
 
-  var_dump($manager);
+  echo var_dump($manager);
 
   //创建新数据库
   $manager->createDataBase("MYPLAN");
