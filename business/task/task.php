@@ -32,7 +32,7 @@
 
     if($result == 1){
 
-      $id = $manager->getlastNum("task");
+      $id = $manager->getLastID("task");
 
       $singelArray = array('id' => $id,'result' => 1, 'msg' => "添加成功！ ");
       echo json_encode($singelArray);

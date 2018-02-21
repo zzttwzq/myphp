@@ -287,27 +287,27 @@
       $sql = "SELECT $fields FROM $tableName $condition";
       $sql = strtoupper($sql);
 
-      echo $sql;
+      // echo $sql;
 
-      // $listArray = array();
-      // $result = $this->query($sql);
+      $listArray = array();
+      $result = $this->query($sql);
 
-      // if ($result["result"] == 1){
-      //
-      //   $data = $result["data"];
-      //   //用json返回成功信息
-      //   foreach ($data as $row) {
-      //
-      //     //从工厂方法中给模型赋值,并放入到数组中去
-      //     Array_push($listArray,getModel($modelName,$row));
-      //   }
-      //
-      //   return $listArray;
-      // }else{
-      //
-      //   //用json返回错误信息
-      //   return $result;
-      // }
+      if ($result["result"] == 1){
+
+        $data = $result["data"];
+        //用json返回成功信息
+        foreach ($data as $row) {
+
+          //从工厂方法中给模型赋值,并放入到数组中去
+          Array_push($listArray,getModel($modelName,$row));
+        }
+
+        return $listArray;
+      }else{
+
+        //用json返回错误信息
+        return $result;
+      }
     }
 
     /**
