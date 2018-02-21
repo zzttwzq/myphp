@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="twitter:" content="">
   <title>重置数据</title>
 </head>
 <body>
 
 <?php
+
+  echo "开始了！！！";
 
   include_once "classes/dataBaseControlManager.php";
 
@@ -16,10 +19,12 @@
   //删除旧的数据库
   $manager->deleteDatabase("MYPLAN");
 
+  var_dump($manager);
+
   //创建新数据库
   $manager->createDataBase("MYPLAN");
 
-////////////////创建登录表并插入数据
+  ////////////////创建登录表并插入数据
   //创建新的表
   $arrayName = array('id' => "int NOT NULL AUTO_INCREMENT PRIMARY KEY",'name' => "varchar(15) unique",'password' => "varchar(15)",'age' => "int",
   'mobile' => "varchar(11)",'cent' => "int",'token' => "varchar(40)",'lastlogin' => "varchar(20)",'level' => "int",'yanzhen' => "int",);
