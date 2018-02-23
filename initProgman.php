@@ -3,8 +3,7 @@
   include_once "classes/dataBaseControlManager.php";
 
 
-  $manager = new dbManager("PROGMAN");
-
+  $manager = new dbManager("");
   $manager->deleteDatabase("PROGMAN");
   echo "<br>";
 

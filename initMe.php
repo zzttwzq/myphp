@@ -2,10 +2,7 @@
 
 include_once "classes/dataBaseControlManager.php";
 
-  $manager = new dbManager("ME");
-  // //连接数据库
-  // $manager->connectToDataBase("ME");
-
+  $manager = new dbManager("");
   //删除旧的数据库
   $manager->deleteDatabase("ME");
 
