@@ -30,9 +30,6 @@
       $this->pdo = new PDO($this->dsn,$this->username,$this->password);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//设置错误模式
 
-      echo "初始化中。。。";
-      echo var_dump($this);
-
       //设置字符集
       echo $this->pdo->exec('SET NAMES utf8');
     }

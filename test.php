@@ -1,5 +1,17 @@
 <?php
 
+
+  $dsn = "mysql:host=127.0.0.1;dbname=$dbname";
+  $username = "root";
+  $password = "1111";
+  $pdo = new PDO($dsn,$username,$password);
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//设置错误模式
+
+  var_dump($pdo);
+
+  //设置字符集
+  echo $pdo->exec('SET NAMES utf8');
+
   // //获取协议
   // $commonProtocol = getprotobyname('tcp');
   // //产生一个socket

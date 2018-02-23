@@ -8,8 +8,6 @@
 
 <?php
 
-  echo "开始了！！！";
-
   include_once "classes/dataBaseControlManager.php";
 
   $manager = new dbManager("MYPLAN");
@@ -18,8 +16,6 @@
 
   //删除旧的数据库
   $manager->deleteDatabase("MYPLAN");
-
-  echo var_dump($manager);
 
   //创建新数据库
   $manager->createDataBase("MYPLAN");
