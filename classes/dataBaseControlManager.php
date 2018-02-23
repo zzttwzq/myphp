@@ -31,7 +31,7 @@
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//设置错误模式
 
       //设置字符集
-      echo $this->pdo->exec('SET NAMES utf8');
+      $this->pdo->exec('SET NAMES utf8');
     }
 
     /**
