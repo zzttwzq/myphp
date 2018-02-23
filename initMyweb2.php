@@ -10,7 +10,7 @@
 
   include_once "classes/dataBaseControlManager.php";
 
-  $manager = new dbManager("MYPLAN");
+  $manager = new dbManager("");
   // //连接数据库
   // $manager->connectToDataBase("MYPLAN");
 
