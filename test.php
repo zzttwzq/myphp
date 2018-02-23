@@ -7,8 +7,12 @@
   $pdo = new PDO($dsn,$username,$password);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//设置错误模式
 
+
+  $sql = "CREATE DATABASE wzq CHARACTER SET utf8"."  COLLATE utf8_general_ci";
+
+
   //设置字符集
-  echo ">>>".$pdo->exec('SET NAMES utf8');
+  echo ">>>".$pdo->exec($sql);
 
   // //获取协议
   // $commonProtocol = getprotobyname('tcp');
