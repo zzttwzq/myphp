@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="twitter:" content="">
-  <title>重置数据</title>
+  <title>重置我的博客第二版数据</title>
 </head>
 <body>
 
   <script type="text/javascript">
 
+    alert("数据是否备份？");
+    alert("数据是否备份？");
     alert("请确保数据是否备份，在执行！！！！！是否执行此操作？");
   </script>
 

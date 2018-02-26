@@ -6,9 +6,15 @@
 </head>
 <body>
 
+  <script type="text/javascript">
+
+    alert("数据是否备份？");
+    alert("数据是否备份？");
+    alert("请确保数据是否备份，在执行！！！！！是否执行此操作？");
+  </script>
+  
 <?php
   include_once "classes/dataBaseControlManager.php";
-
 
   $manager = new dbManager("");
   $manager->deleteDatabase("PROGMAN");
