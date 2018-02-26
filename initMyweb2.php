@@ -65,12 +65,12 @@
   $manager->createTable("TASK",$arrayName);
 
   //添加数据
-  $arrayName = array('title' => "博客网站",'brief' => "博客网站基本上可以用了",'pic' => "http://120.78.131.82/myweb/imgs/angular.png",'text' => "博客网站可以用了",
+  $arrayName = array('title' => "博客网站",'brief' => "博客网站基本上可以用了",'pic' => "http://120.78.131.83/myweb/imgs/angular.png",'text' => "博客网站可以用了",
   'datetime' => "2017-10-20 20:12:12",'class' => "编程",'tag' => "angular",'statue' => "已发布",'userid' => 1,'username' => "wu",'seetime' => 9);
   echo $manager->addData("TASK",$arrayName);
 
   //添加数据
-  $arrayName = array('title' => "webpack+vue",'brief' => "好好学习，天天向上！",'pic' => "http://120.78.131.82/myweb/imgs/vue.png",'text' => "正在学习。。。",
+  $arrayName = array('title' => "webpack+vue",'brief' => "好好学习，天天向上！",'pic' => "http://120.78.131.83/myweb/imgs/vue.png",'text' => "正在学习。。。",
   'datetime' => "2017-10-20 20:12:12",'class' => "编程",'tag' => "vue",'statue' => "已发布",'userid' => 1,'username' => "wu",'seetime' => 1);
   echo $manager->addData("TASK",$arrayName);
 
