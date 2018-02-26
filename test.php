@@ -1,34 +1,25 @@
 <?php
 
-class dbManager
-{
-  var $dsn;//数据源
-  var $username;//用户名
-  var $password;//密码
-  var $pdo;//连接的pdo对象
+  include_once 'classes/dataBaseControlManager.php';
 
-  /**
-   * 初始化方法
-   */
-  function __construct($dbname){
+  $manager = new dbManager('MYPLAN');
 
-    if ($dbname == "") {
+  $result = $manager->selectFromTabel('sys_users','username','','usr');
 
-      $this->dsn = "mysql:host=127.0.0.1";
-    }else{
-
-      $this->dsn = "mysql:host=127.0.0.1;dbname=$dbname";
-    }
-    $this->username = "root";
-    $this->password = "1111";
-    $this->pdo = new PDO($this->dsn,$this->username,$this->password);
-    $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//设置错误模式
-
-    //设置字符集
-    echo $this->pdo->exec('SET NAMES utf8');
-  }
-}
-
-$sql = "CREATE DATABASE wzq CHARACTER SET utf8"."  COLLATE utf8_general_ci";
-echo ">>>".$pdo->exec($sql);
+  // //数组
+  $array = array('data' => $result);
+  //
+  // //总条数
+  // $total = 0;
+  // foreach ($result as $value) {
+  //
+  //   $total ++;
+  //
+  //   $singelArray = array('username' => $value->username);
+  //   Array_push($array,$singelArray);
+  // }
+  //
+  // $array['total'] = $total;
+  // echo "<br />";
+  echo json_encode($array);
 ?>

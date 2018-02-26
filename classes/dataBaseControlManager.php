@@ -211,7 +211,7 @@
       }else{
 
         $msg = $result->getMessage();
-        if (strpos($msg,"Duplicate")&&
+        if (strpos($msg,"Duplicate") &&
             strpos($msg,"entry")) {//包含重复的字段
 
           $array = explode(":",$msg);

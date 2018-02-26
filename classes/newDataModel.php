@@ -32,6 +32,7 @@
     var $star;
     var $tag;
     var $score;
+    var $category;
   }
 
   /**
@@ -52,6 +53,13 @@
     var $progress;
     var $faith;
     var $score;
+  }
+
+  /**
+   *
+   */
+  class USR_Model{
+    var $username;
   }
 
   /**
@@ -83,7 +91,7 @@
 
       $model = new BlogModel();
       $model->id = $row["ID"];
-      $model->pic = $row["PIC"];
+      $model->img = $row["IMG"];
       $model->brief = $row["BRIEF"];
       $model->title = $row["TITLE"];
       $model->text = $row["TEXT"];
@@ -93,6 +101,7 @@
       $model->star = $row["STAR"];
       $model->tag = $row["TAG"];
       $model->score = $row["SCORE"];
+      $model->category = $row["CATEGORY"];
 
       return $model;
     }
@@ -113,6 +122,13 @@
       $model->progress = $row["PROGRESS"];
       $model->faith = $row["FAITH"];
       $model->score = $row["SCORE"];
+
+      return $model;
+    }
+    else if ($type == "usr") {
+
+      $model = new USR_Model();
+      $model->username = $row["USERNAME"];
 
       return $model;
     }

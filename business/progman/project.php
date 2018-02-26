@@ -18,27 +18,28 @@
     //查询数据
     $result = $manager->selectFromTabel("TASK","id,img,title,brief,text,datetime,share,comment,star,tag","$filter ORDER BY datetime DESC LIMIT $page,10","task");
 
-    // if ($result["result"]) {
-    //
-    //   sendJson(0,$result["msg"],null);
-    // }else{
-    //
-    //   sendJson(1,"操作成功！",$result);
-    // }
+    if ($result["result"]) {
+
+      sendJson(0,$result["msg"],null);
+    }else{
+
+      sendJson(1,"操作成功！",$result);
+    }
   }
   else if ($action == "addTaskList") {
 
     //添加数据
     $arrayName = array(
-    'img' => $arr['img'],
-    'title' => $arr['title'],
-    'brief' => $arr['brief'],
-    'text' => $arr['text'],
+    'img' => $jsonData['img'],
+    'title' => $jsonData['title'],
+    'brief' => $jsonData['brief'],
+    'text' => $jsonData['text'],
     'datetime' => date("Y-m-d H:i:s"),
     'share' => 0,
     'comment' => 0,
     'star' => 0,
-    'tag' => $arr['tag']);
+    'category' => $jsonData['category'],
+    'tag' => $jsonData['tag']);
 
     //查询数据
     $result = $manager->addData("TASK",$arrayName);
