@@ -6,6 +6,11 @@
 </head>
 <body>
 
+  <script type="text/javascript">
+
+    alert("请确保数据是否备份，在执行！！！！！是否执行此操作？");
+  </script>
+
 <?php
 
   include_once "classes/dataBaseControlManager.php";
@@ -57,12 +62,12 @@
   $manager->createTable("TASK",$arrayName);
 
   //添加数据
-  $arrayName = array('title' => "博客网站",'brief' => "博客网站基本上可以用了",'pic' => "http://localhost/myweb/imgs/angular.png",'text' => "博客网站使用angular1.6x，后台使用php，数据库是mysql，放阿里云上， 但是有点小卡，不知道是不是网络的问题",
+  $arrayName = array('title' => "博客网站",'brief' => "博客网站基本上可以用了",'pic' => "http://120.78.131.82/myweb/imgs/angular.png",'text' => "博客网站可以用了",
   'datetime' => "2017-10-20 20:12:12",'class' => "编程",'tag' => "angular",'statue' => "已发布",'userid' => 1,'username' => "wu",'seetime' => 9);
   echo $manager->addData("TASK",$arrayName);
 
   //添加数据
-  $arrayName = array('title' => "webpack+vue",'brief' => "有点难，正在努力学！",'pic' => "http://localhost/myweb/imgs/vue.png",'text' => "能够使用命令行构建脚手架了，但是怎么处理。vue文件还是没有头绪！！！",
+  $arrayName = array('title' => "webpack+vue",'brief' => "好好学习，天天向上！",'pic' => "http://120.78.131.82/myweb/imgs/vue.png",'text' => "正在学习。。。",
   'datetime' => "2017-10-20 20:12:12",'class' => "编程",'tag' => "vue",'statue' => "已发布",'userid' => 1,'username' => "wu",'seetime' => 1);
   echo $manager->addData("TASK",$arrayName);
 
