@@ -1,5 +1,12 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>重置博客第三版数据</title>
+</head>
+<body>
 
+<?php
   include_once "classes/dataBaseControlManager.php";
 
 
