@@ -1,6 +1,6 @@
 <?php
 
-  date_default_timezone_set('PRC'); //设置中国时区 
+  date_default_timezone_set('PRC'); //设置中国时区
 
   /**
    * 发送json数据
@@ -12,6 +12,19 @@
 
     //用json信息
     $resultArray = array('result' => $result, 'msg' => $msg, 'data' => $data);
+    echo json_encode($resultArray);
+  }
+
+  /**
+   * 发送json数据
+   * $result 状态码 0:错误,1:表示成功,其他待定
+   * $msg 提示信息
+   * $data 返回的数据都放这里面(空的话就返回空字符串)
+   */
+  function sendJsonWithTotal($total,$result,$msg,$data){
+
+    //用json信息
+    $resultArray = array('total' => $total,'result' => $result, 'msg' => $msg, 'data' => $data);
     echo json_encode($resultArray);
   }
 

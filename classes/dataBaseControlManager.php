@@ -64,7 +64,7 @@
         return array('result' => 1,'data' => $this->pdo->query($sql), );;
       } catch (PDOException $e) {
 
-        return array('result' => 0,'msg' => $e, );;
+        return array('result' => 0,'msg' => $e,'sql'=>$sql );
       }
     }
 
@@ -314,7 +314,7 @@
      * 返回最后增加的ID
      * return string:ID
      */
-     function getLastID($tablename){
+    function getLastID($tablename){
 
        $sql = "SELECT MAX(ID) FROM $tablename";
        foreach ($this->pdo->query($sql) as $row) {

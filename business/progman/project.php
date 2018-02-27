@@ -16,13 +16,15 @@
     $filter = $jsonData["filter"];
 
     //查询数据
+    $resultTotal = $manager->selectFromTabel("TASK","id","","task");
+
     $result = $manager->selectFromTabel("TASK","id,img,title,brief,text,datetime,share,comment,star,tag"," $filter ORDER BY datetime DESC LIMIT $page,10","task");
     if ($result["result"]) {
 
       sendJson(0,$result["msg"],null);
     }else{
 
-      sendJson(1,"操作成功！",$result);
+      sendJsonWithTotal(count($resultTotal),1,"操作成功！",$result);
     }
   }
   else if ($action == "addTaskList") {

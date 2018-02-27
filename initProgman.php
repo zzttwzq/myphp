@@ -12,7 +12,7 @@
     alert("数据是否备份？");
     alert("请确保数据是否备份，在执行！！！！！是否执行此操作？");
   </script>
-  
+
 <?php
   include_once "classes/dataBaseControlManager.php";
 
@@ -106,17 +106,14 @@
   echo "<br>";
 
 
-  //-----------初始化日程
+  //-----------初始化日程表
   // 创建新的表
-  $arrayName = array('id' => "int NOT NULL AUTO_INCREMENT PRIMARY KEY",
-  'datetime' => "varchar(8) unique",
-  'score' => "int",);
+  $arrayName = array('id' => "int NOT NULL AUTO_INCREMENT PRIMARY KEY",'datetime' => "varchar(8) unique",'score' => "int",);
   $manager->createTable("DATE",$arrayName);
   echo "<br>";
 
   // 添加数据
-  $arrayName = array('datetime' => "2017125",
-  'score' => "5",);
+  $arrayName = array('datetime' => "2017125",'score' => "5",);
   $manager->addData("DATE",$arrayName);
   echo "<br>";
  ?>
