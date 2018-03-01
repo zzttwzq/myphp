@@ -16,20 +16,32 @@
     $password = paramAddControlWord($jsonData["password"]);
 
     //查询数据
-    $result = $manager->selectFromTabel("LOGIN","id,password,name,age,mobile,cent,token","where username=$username and password=$password","login");
+    $result = $manager->selectFromTabel("LOGIN","id,password,name,age,mobile,cent,token,usrimg","where username=$username and password=$password","login");
 
-    if ($result["result"]) {
+    if (count($result) > 0) {
 
-      sendJson(0,$result["msg"],null);
-    }else{
+      if ($result["result"]) {
 
-      sendJson(1,"操作成功！",$result);
+        sendJson(0,$result["msg"],null);
+      }else{
 
-      $token = "asdfasfasdfasdkklaosdfi1o2398kjsdfk9";
+        $usrObj = $result[0];
+        if ($usrObj->id) {
 
-      //把token写入数据库
-      $manager->updateData("LOGIN",array('token' => $token),"where id = '".$haveusr->id."'");
+          sendJson(1,"操作成功！",$usrObj);
 
+          $token = "111";
+
+          //把token写入数据库
+          $manager->updateData("LOGIN",array('token' => $token),"where id = '".$usrObj->id."'");
+        }else{
+
+          sendJson(0,"用户名或密码错误!",null);
+        }
+      }
+    }else {
+
+      sendJson(0,'没有这个用户！',null);
     }
   }
  ?>

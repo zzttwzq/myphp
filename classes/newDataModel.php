@@ -15,6 +15,7 @@
     var $level;
     var $yanzhen;
     var $password;
+    var $usrimg;
   }
 
   /**
@@ -84,6 +85,7 @@
       $model->level = $row["LEVEL"];
       $model->yanzhen = $row["YANZHEN"];
       $model->password = $row["PASSWORD"];
+      $model->usrimg = $row["USRIMG"];
 
       return $model;
     }
