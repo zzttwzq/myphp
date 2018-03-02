@@ -14,17 +14,28 @@
 
     $page = $jsonData["page"];
     $filter = $jsonData["filter"];
+    if (!$page) {
+      $page = 0;
+    }
 
     //查询数据
     $resultTotal = $manager->selectFromTabel("TASK","id","","task");
 
-    $result = $manager->selectFromTabel("TASK","id,img,title,brief,text,datetime,share,comment,star,tag"," $filter ORDER BY datetime DESC LIMIT $page,10","task");
+    $result = $manager->selectFromTabel("TASK","id,title,brief,text,datetime,share,comment,star,tag,category"," $filter ORDER BY datetime DESC LIMIT $page,10","task");
     if ($result["result"]) {
 
       sendJson(0,$result["msg"],null);
     }else{
 
-      sendJsonWithTotal(count($resultTotal),1,"操作成功！",$result);
+      //插入图片
+      $listArray = array();
+      foreach ($result as $row) {
+
+        $row->pic = "http://120.78.131.83/progman/imgs/".$row->tag.'.png';
+        Array_push($listArray,$row);
+      }
+
+      sendJsonWithTotal(count($resultTotal),1,"操作成功！",$listArray);
     }
   }
   else if ($action == "addTaskList") {
@@ -125,4 +136,5 @@
       sendJson(1,"操作成功！",$result);
     }
   }
+  
  ?>

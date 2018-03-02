@@ -57,13 +57,6 @@
   }
 
   /**
-   *
-   */
-  class USR_Model{
-    var $username;
-  }
-
-  /**
    * 创建模型
    * $type 模型类型
    * $row 数据集
@@ -124,13 +117,6 @@
       $model->progress = $row["PROGRESS"];
       $model->faith = $row["FAITH"];
       $model->score = $row["SCORE"];
-
-      return $model;
-    }
-    else if ($type == "usr") {
-
-      $model = new USR_Model();
-      $model->username = $row["USERNAME"];
 
       return $model;
     }
