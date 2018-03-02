@@ -40,16 +40,16 @@
     echo "<br>";
 
     // 添加数据
-    $arrayName = array('username' => "4",
-    'name' => "吴志强1",
-    'password' => "111111",
+    $arrayName = array('username' => "wu",
+    'name' => "吴志强",
+    'password' => "111",
     'age' => 27,
     'mobile' => "13023628319",
     'cent' => 100,
     'token' => "qwertyuiopasdfghjklzxcvbnmkl",
     'lastlogin' => "2017-9-14 7:41",
     'level' => 1,
-    'usrimg' => '');
+    'usrimg' => 'http://120.78.131.83/progman/imgs/logo.jpg');
     echo $manager->addData("LOGIN",$arrayName);
     echo "<br>";
   }

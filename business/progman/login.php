@@ -29,7 +29,6 @@
         if ($usrObj->id) {
 
           sendJson(1,"操作成功！",$usrObj);
-
           $token = "111";
 
           //把token写入数据库
