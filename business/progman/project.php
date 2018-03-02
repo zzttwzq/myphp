@@ -42,7 +42,6 @@
 
     //添加数据
     $arrayName = array(
-    'img' => $jsonData['img'],
     'title' => $jsonData['title'],
     'brief' => $jsonData['brief'],
     'text' => $jsonData['text'],
@@ -70,11 +69,11 @@
 
     //添加数据
     $arrayName = array(
-    'img' => $jsonData['img'],
     'title' => $jsonData['title'],
     'brief' => $jsonData['brief'],
     'text' => $jsonData['text'],
-    'tag' => $jsonData['tag']);
+    'tag' => $jsonData['tag'],
+    'category' => $jsonData['category'],);
 
     //查询数据
     $result = $manager->updateData("TASK",$arrayName,"where id=$ids");
@@ -136,5 +135,5 @@
       sendJson(1,"操作成功！",$result);
     }
   }
-  
+
  ?>

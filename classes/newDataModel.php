@@ -23,7 +23,6 @@
    */
   class BlogModel{
     var $id;
-    var $pic;
     var $title;
     var $brief;
     var $text;
