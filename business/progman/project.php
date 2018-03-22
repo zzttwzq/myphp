@@ -135,4 +135,40 @@
       sendJson(1,"操作成功！",$result);
     }
   }
+  else if ($action == "uploadimg"){
+
+    if ((($_FILES["file"]["type"] == "image/gif")
+    || ($_FILES["file"]["type"] == "image/jpeg")
+    || ($_FILES["file"]["type"] == "image/png")
+    || ($_FILES["file"]["type"] == "image/pjpeg"))
+    && ($_FILES["file"]["size"]/1024/1024 < 5)){
+
+      if ($_FILES["file"]["error"] > 0){
+
+        sendJson(0,"Return Code: " . $_FILES["file"]["error"] . "<br />",null);
+      }
+      else{
+
+        $fileStorePath = '/var/pic/' . $_FILES["file"]["name"];
+        if (file_exists($fileStorePath)){
+
+          echo $_FILES["file"]["name"] . " already exists. ";
+        }
+        else{
+
+          $data = array('Upload:' => $_FILES["file"]["name"],
+                        'Type:'=>$_FILES["file"]["type"],
+                        'Size:'=>($_FILES["file"]["size"] / 1024).'kb',
+                        'Temp file'=>$_FILES["file"]["tmp_name"],);
+
+            move_uploaded_file($_FILES["file"]["tmp_name"],$fileStorePath);
+            sendJson(1,$_FILES["file"]["name"],$data);
+          }
+        }
+      }
+    else{
+
+      sendJson(0,"文件可是不正确或文件大小超过5M！",null);
+    }
+  }
  ?>
