@@ -56,6 +56,20 @@
   }
 
   /**
+   * 我的项目列表
+   */
+  class ProjectModel{
+    var $id;
+    var $title;
+    var $tag;
+    var $lastItem;
+    var $createTime;
+    var $linkLearnID;
+    var $listArray;
+    var $img;
+  }
+
+  /**
    * 创建模型
    * $type 模型类型
    * $row 数据集
@@ -63,7 +77,21 @@
    */
   function getModel($type,$row){
 
-    if ($type == "login") {
+    if ($type == "project") {
+
+      $model = new UserModel();
+      $model->id = $row["ID"];
+      $model->title = $row["TITLE"];
+      $model->tag = $row["TAG"];
+      $model->lastItem = $row["LASTITEM"];
+      $model->createTime = $row["CREATETIME"];
+      $model->linkLearnID = $row["LINKLEARNID"];
+      $model->listArray = $row["LISTARRAY"];
+      $model->img = $row["IMG"];
+
+      return $model;
+    }
+    else if ($type == "login") {
 
       $model = new UserModel();
       $model->username = $row["USERNAME"];

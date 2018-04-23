@@ -291,7 +291,7 @@
 
       $listArray = array();
       $result = $this->query($sql);
-
+      
       if ($result["result"] == 1){
 
         $data = $result["data"];
@@ -322,5 +322,19 @@
            return $row['MAX(ID)'];
        }
      }
+
+
+    /**
+     * 返回最后增加的ID
+     * return string:ID
+     */
+    function getTotalNum($tablename){
+
+      $sql = "SELECT COUNT(1) FROM $tablename";
+      foreach ($this->pdo->query($sql) as $row) {
+
+          return $row['COUNT(1)'];
+      }
+    }
   }
 ?>

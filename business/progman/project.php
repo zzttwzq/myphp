@@ -10,18 +10,28 @@
   $raw_post_data = file_get_contents('php://input');
   $jsonData = json_decode($raw_post_data,true);
 
-  if ($action == "getTaskList") {
+  if ($action == "getProjectList") {
 
     $page = $jsonData["page"];
     $filter = $jsonData["filter"];
+    $id = $jsonData["id"];
+
+    if ($filter != "") {
+      $filterString = " WHERE TITLE LIKE '%$filter%' OR TAG LIKE '%$filter%' OR LASTITEM LIKE '%$filter%'";
+    }
+
+    if ($id) {
+      $filterString = "WHERE id='$id'";
+    }
+
     if (!$page) {
       $page = 0;
     }
 
     //查询数据
-    $resultTotal = $manager->selectFromTabel("TASK","id","","task");
+    $resultTotal = $manager->getTotalNum("PROJECT");
+    $result = $manager->selectFromTabel("PROJECT","ID,TITLE,TAG,LASTITEM,CREATETIME,LINKLEARNID,LISTARRAY,IMG","$filterString ORDER BY DATETIME DESC LIMIT $page,10","project");
 
-    $result = $manager->selectFromTabel("TASK","id,title,brief,text,datetime,share,comment,star,tag,category"," $filter ORDER BY datetime DESC LIMIT $page,10","task");
     if ($result["result"]) {
 
       sendJson(0,$result["msg"],null);
@@ -31,14 +41,16 @@
       $listArray = array();
       foreach ($result as $row) {
 
-        $row->pic = "https://zzttwzq.top/progman/imgs/".$row->tag.'.png';
+        if ($row->img == null){
+          $row->img = "https://zzttwzq.top/progman/imgs/".$row->tag.'.png';
+        }
         Array_push($listArray,$row);
       }
 
       sendJsonWithTotal(count($resultTotal),1,"操作成功！",$listArray);
     }
   }
-  else if ($action == "addTaskList") {
+  else if ($action == "addProject") {
 
     //添加数据
     $arrayName = array(
@@ -63,7 +75,7 @@
       sendJson(1,"操作成功！",$result);
     }
   }
-  else if ($action == "updateTaskList") {
+  else if ($action == "deleteProject") {
 
     $ids = $jsonData['id'];
 
@@ -86,7 +98,7 @@
       sendJson(1,"操作成功！",$result);
     }
   }
-  else if ($action == "deleteTaskList") {
+  else if ($action == "udpateProject") {
 
     //添加数据
     $ids = $jsonData['id'];
@@ -102,73 +114,38 @@
       sendJson(1,"操作成功！",$result);
     }
   }
-  else if ($action == "getScoreList") {
-
-    //查询数据
-    $result = $manager->selectFromTabel("DATE","id,datetime,score","","task");
-
-    if ($result["result"]) {
-
-      sendJson(0,$result["msg"],null);
-    }else{
-
-      sendJson(1,"操作成功！",$result);
-    }
-  }
-  else if ($action == "addScoreList") {
-
-    //添加数据
-    $arrayName = array(
-    'datetime' => $jsonData['datetime'],
-    'score' => $jsonData['score'],);
-
-    //查询数据
-    $result = $manager->addData("DATE",$arrayName);
-
-    var_dump($result);
-
-    if ($result["result"]) {
-
-      sendJson(0,$result["msg"],null);
-    }else{
-
-      sendJson(1,"操作成功！",$result);
-    }
-  }
-  else if ($action == "uploadimg"){
+  else if ($action == "uploadImg"){
 
     if ((($_FILES["file"]["type"] == "image/gif")
-    || ($_FILES["file"]["type"] == "image/jpeg")
-    || ($_FILES["file"]["type"] == "image/png")
-    || ($_FILES["file"]["type"] == "image/pjpeg"))
-    && ($_FILES["file"]["size"]/1024/1024 < 5)){
+        || ($_FILES["file"]["type"] == "image/jpeg")
+        || ($_FILES["file"]["type"] == "image/pjpeg")
+        || ($_FILES["file"]["type"] == "image/png"))
+        && ($_FILES["file"]["size"] < 200000)){
 
       if ($_FILES["file"]["error"] > 0){
 
         sendJson(0,"Return Code: " . $_FILES["file"]["error"] . "<br />",null);
-      }
-      else{
+      }else{
 
-        $fileStorePath = '/var/pic/' . $_FILES["file"]["name"];
-        if (file_exists($fileStorePath)){
+        if (file_exists("upload/" . $_FILES["file"]["name"])){
 
-          echo $_FILES["file"]["name"] . " already exists. ";
-        }
-        else{
+          sendJson(0,$_FILES["file"]["name"] . " already exists. ",null);
+        }else{
 
-          $data = array('Upload:' => $_FILES["file"]["name"],
-                        'Type:'=>$_FILES["file"]["type"],
-                        'Size:'=>($_FILES["file"]["size"] / 1024).'kb',
-                        'Temp file'=>$_FILES["file"]["tmp_name"],);
+          move_uploaded_file($_FILES["file"]["tmp_name"],"upload/".$_FILES["file"]["name"]);
 
-            move_uploaded_file($_FILES["file"]["tmp_name"],$fileStorePath);
-            sendJson(1,$_FILES["file"]["name"],$data);
-          }
+          $result = array('filename' => 'https://zzttwzq.top/myphp/upload/'.$_FILES["file"]["name"]);
+          sendJson(1,"操作成功！",$result);
         }
       }
-    else{
 
-      sendJson(0,"文件可是不正确或文件大小超过5M！",null);
+    }else{
+
+      $filename = $_FILES['file']['name'];
+      $filetype = $_FILES['file']['type'];
+      $filesize = $_FILES['file']['size'];
+
+      sendJson(0,"Invalid file "."filename:$filename filetype:$filetype filesize:$filesize",null);
     }
   }
  ?>
