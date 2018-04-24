@@ -287,8 +287,6 @@
       $sql = "SELECT $fields FROM $tableName $condition";
       $sql = strtoupper($sql);
 
-      // echo $sql;
-
       $listArray = array();
       $result = $this->query($sql);
       
@@ -325,7 +323,7 @@
 
 
     /**
-     * 返回最后增加的ID
+     * 返回表中所有的记录
      * return string:ID
      */
     function getTotalNum($tablename){

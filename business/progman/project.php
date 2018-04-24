@@ -30,14 +30,14 @@
 
     //查询数据
     $resultTotal = $manager->getTotalNum("PROJECT");
-    $result = $manager->selectFromTabel("PROJECT","ID,TITLE,TAG,LASTITEM,CREATETIME,LINKLEARNID,LISTARRAY,IMG","$filterString ORDER BY DATETIME DESC LIMIT $page,10","project");
+    $result = $manager->selectFromTabel("PROJECT","ID,TITLE,TAG,LASTITEM,CREATETIME,LINKLEARNID,LISTARRAY,IMG","$filterString ORDER BY CREATETIME DESC LIMIT $page,10","project");
 
     if ($result["result"]) {
 
       sendJson(0,$result["msg"],null);
     }else{
 
-      //插入图片
+      // 插入图片
       $listArray = array();
       foreach ($result as $row) {
 
@@ -47,7 +47,7 @@
         Array_push($listArray,$row);
       }
 
-      sendJsonWithTotal(count($resultTotal),1,"操作成功！",$listArray);
+      sendJsonWithTotal($resultTotal,1,"操作成功！",$listArray);
     }
   }
   else if ($action == "addProject") {
