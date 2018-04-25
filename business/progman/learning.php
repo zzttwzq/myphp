@@ -12,7 +12,7 @@
 
   if ($action == "getTaskList") {
 
-    $page = $jsonData["page"];
+    $page = $jsonData["page"]*10;
     $filter = $jsonData["filter"];
     $id = $jsonData["id"];
     if ($filter != "") {

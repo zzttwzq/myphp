@@ -12,7 +12,7 @@
 
   if ($action == "getProjectList") {
 
-    $page = $jsonData["page"];
+    $page = $jsonData["page"]*10;
     $filter = $jsonData["filter"];
     $id = $jsonData["id"];
 
@@ -55,40 +55,14 @@
     //添加数据
     $arrayName = array(
     'title' => $jsonData['title'],
-    'brief' => $jsonData['brief'],
-    'text' => $jsonData['text'],
-    'datetime' => date("Y-m-d H:i:s"),
-    'share' => 0,
-    'comment' => 0,
-    'star' => 0,
-    'category' => $jsonData['category'],
-    'tag' => $jsonData['tag']);
-
-    //查询数据
-    $result = $manager->addData("TASK",$arrayName);
-
-    if ($result["result"]) {
-
-      sendJson(0,$result["msg"],null);
-    }else{
-
-      sendJson(1,"操作成功！",$result);
-    }
-  }
-  else if ($action == "deleteProject") {
-
-    $ids = $jsonData['id'];
-
-    //添加数据
-    $arrayName = array(
-    'title' => $jsonData['title'],
-    'brief' => $jsonData['brief'],
-    'text' => $jsonData['text'],
     'tag' => $jsonData['tag'],
-    'category' => $jsonData['category'],);
+    'lastitem' => $jsonData['lastitem'],
+    'createtime' => date("Y-m-d H:i:s"),
+    'linklearnid' => $jsonData['linklearnid'],
+    'listarray' => $jsonData['listarray']);
 
     //查询数据
-    $result = $manager->updateData("TASK",$arrayName,"where id=$ids");
+    $result = $manager->addData("PROJECT",$arrayName);
 
     if ($result["result"]) {
 
@@ -100,11 +74,34 @@
   }
   else if ($action == "udpateProject") {
 
+    $ids = $jsonData['id'];
+
+    //添加数据
+    $arrayName = array(
+      'title' => $jsonData['title'],
+      'tag' => $jsonData['tag'],
+      'lastitem' => $jsonData['lastitem'],
+      'createtime' => date("Y-m-d H:i:s"),
+      'linklearnid' => $jsonData['linklearnid'],
+      'listarray' => $jsonData['listarray']);
+
+    //查询数据
+    $result = $manager->updateData("PROJECT",$arrayName,"WHERE ID=$ids");
+    if ($result["result"]) {
+
+      sendJson(0,$result["msg"],null);
+    }else{
+
+      sendJson(1,"操作成功！",$result);
+    }
+  }
+  else if ($action == "deleteProject") {
+
     //添加数据
     $ids = $jsonData['id'];
 
     //查询数据
-    $result = $manager->deleteData("TASK","where id=$ids");
+    $result = $manager->deleteData("PROJECT","WHERE ID=$ids");
 
     if ($result["result"]) {
 
@@ -132,9 +129,14 @@
           sendJson(0,$_FILES["file"]["name"] . " already exists. ",null);
         }else{
 
-          move_uploaded_file($_FILES["file"]["tmp_name"],"upload/".$_FILES["file"]["name"]);
+          $utf8FileName = date("Y-m-d h:m:s").'.'.explode('.',$_FILES["file"]["name"])[1];
 
-          $result = array('filename' => 'https://zzttwzq.top/myphp/upload/'.$_FILES["file"]["name"]);
+          // move_uploaded_file($_FILES["file"]["tmp_name"],"../../upload/".$utf8FileName);
+
+          move_uploaded_file($_FILES["file"]["tmp_name"],"../../upload/".$_FILES["file"]["name"]);
+          rename($_FILES["file"]["name"],$_FILES["file"]["name"]);
+
+          $result = array('imgUrl' => 'https://zzttwzq.top/myphp/upload/'.$utf8FileName,filename => $_FILES["file"]["name"]);
           sendJson(1,"操作成功！",$result);
         }
       }
