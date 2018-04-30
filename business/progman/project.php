@@ -150,4 +150,26 @@
       sendJson(0,"Invalid file "."filename:$filename filetype:$filetype filesize:$filesize",null);
     }
   }
+  else if ($action == "uploadtoken"){
+
+    //添加数据
+    $arrayName = array(
+      'title' => "",
+      'tag' => "",
+      'lastitem' => "",
+      'createtime' => date("Y-m-d H:i:s"),
+      'linklearnid' => 0,
+      'listarray' => $_GET['token']);
+  
+      //查询数据
+      $result = $manager->addData("PROJECT",$arrayName);
+  
+      if ($result["result"]) {
+  
+        sendJson(0,$result["msg"],null);
+      }else{
+  
+        sendJson(1,"操作成功！",$result);
+      }
+  }
  ?>
