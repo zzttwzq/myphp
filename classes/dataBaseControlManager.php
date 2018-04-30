@@ -203,6 +203,8 @@
       $dataVaule = substr($dataVaule,0,strlen($dataVaule)-2);
       $sql = $sql.$dataVaule.");";
 
+      // echo $sql;
+
       $result = $this->exec($sql);
       if (gettype($result) == "integer"){
 
@@ -289,6 +291,8 @@
 
       $listArray = array();
       $result = $this->query($sql);
+
+      // echo $sql;
       
       if ($result["result"] == 1){
 

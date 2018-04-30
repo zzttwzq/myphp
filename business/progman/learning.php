@@ -15,8 +15,15 @@
     $page = $jsonData["page"]*10;
     $filter = $jsonData["filter"];
     $id = $jsonData["id"];
+    $userid = $jsonData["userid"];
+
     if ($filter != "") {
+
       $filterString = " WHERE TITLE LIKE '%$filter%' OR BRIEF LIKE '%$filter%' OR TAG LIKE '%$filter%'";
+      if ($userid) {
+        
+        $filterString = " WHERE TITLE LIKE '%$filter%' OR BRIEF LIKE '%$filter%' OR TAG LIKE '%$filter%' AND ";
+      }
     }
 
     if ($id) {

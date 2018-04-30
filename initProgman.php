@@ -47,7 +47,7 @@
         'lastItem' => "varchar(100)",
         'createTime' => "datetime",
         'linkLearnID' => "int",
-        'listArray' => "varchar(1000)",
+        'listArray' => "varchar(20000)",
         'img' => "varchar(100)"
       );
       echo "<br>";
