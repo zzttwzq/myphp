@@ -40,7 +40,7 @@
       $listArray = array();
       foreach ($result as $row) {
 
-        $row->pic = "https://zzttwzq.top/progman/imgs/".$row->tag.'.png';
+        $row->pic = "http://114.67.71.172/progman/imgs/".$row->tag.'.png';
         Array_push($listArray,$row);
       }
 
