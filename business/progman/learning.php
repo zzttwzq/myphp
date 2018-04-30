@@ -22,7 +22,7 @@
       $filterString = " WHERE TITLE LIKE '%$filter%' OR BRIEF LIKE '%$filter%' OR TAG LIKE '%$filter%'";
       if ($userid) {
         
-        $filterString = " WHERE TITLE LIKE '%$filter%' OR BRIEF LIKE '%$filter%' OR TAG LIKE '%$filter%' AND ";
+        $filterString = " WHERE TITLE LIKE '%$filter%' OR BRIEF LIKE '%$filter%' OR TAG LIKE '%$filter%'";
       }
     }
 
@@ -35,7 +35,7 @@
     }
 
     //查询数据
-    $resultTotal = $manager->selectFromTabel("TASK","id","","task");
+    $resultTotal = $manager->getTotalNum("TASK");
     $result = $manager->selectFromTabel("TASK","id,title,brief,text,datetime,share,comment,star,tag,category","$filterString ORDER BY DATETIME DESC LIMIT $page,10","task");
 
     if ($result["result"]) {
