@@ -67,6 +67,7 @@
     var $linkLearnID;
     var $listArray;
     var $img;
+    var $progress;
   }
 
   /**
@@ -88,6 +89,7 @@
       $model->linkLearnID = $row["LINKLEARNID"];
       $model->listArray = $row["LISTARRAY"];
       $model->img = $row["IMG"];
+      $model->progress = $row["PROGRESS"];
 
       return $model;
     }

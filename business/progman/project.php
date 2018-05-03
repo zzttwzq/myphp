@@ -30,7 +30,7 @@
 
     //查询数据
     $resultTotal = $manager->getTotalNum("PROJECT");
-    $result = $manager->selectFromTabel("PROJECT","ID,TITLE,TAG,LASTITEM,CREATETIME,LINKLEARNID,LISTARRAY,IMG","$filterString ORDER BY CREATETIME DESC LIMIT $page,10","project");
+    $result = $manager->selectFromTabel("PROJECT","ID,TITLE,TAG,LASTITEM,CREATETIME,LINKLEARNID,LISTARRAY,IMG,PROGRESS","$filterString ORDER BY CREATETIME DESC LIMIT $page,10","project");
 
     if ($result["result"]) {
 
@@ -59,7 +59,8 @@
     'lastitem' => $jsonData['lastitem'],
     'createtime' => date("Y-m-d H:i:s"),
     'linklearnid' => $jsonData['linklearnid'],
-    'listarray' => $jsonData['listarray']);
+    'listarray' => $jsonData['listarray'],
+    'progress' => $jsonData['progress']);
 
     //查询数据
     $result = $manager->addData("PROJECT",$arrayName);
@@ -83,7 +84,8 @@
       'lastitem' => $jsonData['lastitem'],
       'createtime' => date("Y-m-d H:i:s"),
       'linklearnid' => $jsonData['linklearnid'],
-      'listarray' => $jsonData['listarray']);
+      'listarray' => $jsonData['listarray'],
+      'progress' => $jsonData['progress']);
 
     //查询数据
     $result = $manager->updateData("PROJECT",$arrayName,"WHERE ID=$ids");

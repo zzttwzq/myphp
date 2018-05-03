@@ -48,7 +48,8 @@
         'createTime' => "datetime",
         'linkLearnID' => "int",
         'listArray' => "varchar(20000)",
-        'img' => "varchar(100)"
+        'img' => "varchar(100)",
+        'progress' => "int(10)"
       );
       echo "<br>";
       echo ">>>>>>>>>>>>>>>>>>>>>>>>>";
@@ -65,6 +66,7 @@
       'createTime' => "2018-4-20 15:36:22",
       'linkLearnID' => 10,
       'listArray' => "varchar(1000)",
+      'progress' => "10"
       // 'img' => "https://zzttwzq.top/progman/imgs/logo.png"
     );
       echo "<br>";
