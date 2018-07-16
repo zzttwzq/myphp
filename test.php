@@ -3,7 +3,7 @@
     include_once "classes/dataBaseControlManager.php";
 
     $total = array();
-
+    
     //------------1
     $youhuiquan = array(
         "id"=>968.0,
@@ -618,9 +618,7 @@
 //     echo $_FILES["file"]["size"];
 //     echo "Invalid file";
 //   }
-// 
+//
 
-  
+
 ?>
-
-
